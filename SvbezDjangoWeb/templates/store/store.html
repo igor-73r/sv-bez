@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Магазин</title>
+{% endblock %}
+
+{% block extra_links %}
+<link rel="stylesheet" href="{% static 'css/product_card.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<section class="cards">
+    {% for product in products %}
+    <div class="card">
+        {% if product.image %}
+            <img src="{{ product.image.url }}">
+        {% endif %}
+        <div class="content">
+            <div class="headline">
+                <a href="#">{{product.brand}} {{product.model}}</a>
+            </div>
+            <div class="text">
+                <p>{{ product.description | truncatewords:15 }}</p>
+            </div>
+            <div class="price">
+                <p>{{ product.price }} ₽</p>
+            </div>
+<!--            <div class="button"></div>-->
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock %}

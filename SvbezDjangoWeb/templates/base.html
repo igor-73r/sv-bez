@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang='ru' class=''>
+<head>
+    <meta charset='UTF-8'>
+    {% block title %}
+    <title>SvBez - Современная безопасность</title>
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static 'css/text.css' %}" type="text/css" media="all">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    {% block extra_links %}
+    {% endblock %}
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="wrap">
+        <header class="header">
+            <div class="logo"></div>
+            <nav>
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </nav>
+        </header>
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="arrow animated bounce"></div>
+</div>
+
+<footer class="footer">
+    <div class="logo"></div>
+    <nav>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </nav>
+</footer>
+
+</body>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="{% static 'js/base.js' %}"></script>
+
+</html>

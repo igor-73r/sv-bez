@@ -1,0 +1,49 @@
+p { margin: 0; }
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    color: tomato;
+}
+.headline {
+    display: flex;
+    margin: 10px;
+    /*list-style: none;*/
+    width: 85%;
+    height: auto;
+    /*background: var(--clr1);*/
+    border-radius: var(--text-radius);
+    align-items: center;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.text {
+    display: flex;
+    padding: 10px;
+    /*margin: 10px auto;*/
+    max-width: 90%;
+    height: auto;
+    background: var(--clr1);
+    border-radius: var(--border-radius);
+}
+
+section .button {
+    display: block;
+    margin: 20px auto 0 auto;
+    max-width: 120px;
+    height: 35px;
+    background: var(--clr1);
+    border-radius: var(--text-radius);
+}
+
+.price {
+    display: flex;
+    width: 90%;
+    margin: 10px;
+    font-weight: bolder;
+    font-size: 30px;
+    /*color: tomato;*/
+    justify-content: flex-end;
+}
