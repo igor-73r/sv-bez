@@ -13,23 +13,30 @@
 
 <section class="cards">
     {% for product in products %}
-    <div class="card">
-        {% if product.image %}
-            <img src="{{ product.image.url }}">
+        {% if product.is_published %}
+            <div class="card">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}">
+                {% endif %}
+                <div class="content">
+                    <div class="headline">
+                        <a href="{% url 'product_detail' product.slug %}">{{product.brand}} {{product.model}}</a>
+                    </div>
+                    <div class="text">
+                        <p>{{ product.description | truncatewords:15 }}</p>
+                    </div>
+                    <div class="price">
+                        {% if product.sale %}
+                            <p class="new-price">{{ product.sale }} ₽</p>
+                            <s class="old-price">{{ product.price }} ₽</s>
+                        {%  else %}
+                            <p>{{ product.price }} ₽</p>
+                        {% endif %}
+                    </div>
+        <!--            <div class="button"></div>-->
+                </div>
+            </div>
         {% endif %}
-        <div class="content">
-            <div class="headline">
-                <a href="#">{{product.brand}} {{product.model}}</a>
-            </div>
-            <div class="text">
-                <p>{{ product.description | truncatewords:15 }}</p>
-            </div>
-            <div class="price">
-                <p>{{ product.price }} ₽</p>
-            </div>
-<!--            <div class="button"></div>-->
-        </div>
-    </div>
     {% endfor %}
 </section>
 

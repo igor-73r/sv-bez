@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_links %}
+    <link rel="stylesheet" href="{% static "css/product_detail.css" %}">
+{% endblock %}
+{% block content %}
+    <div class="main-card">
+        <div class="main-block">
+            <img src="{{ product.image.url }}" alt="">
+            <div class="content">
+                <div class="info">
+                    <div class="brand"><p>{{product.brand}}</p></div>
+                    <div class="model"><p>{{product.model}}</p></div>
+                </div>
+                <div class="price">
+                    {% if product.sale %}
+                        <p class="new-price">{{ product.sale }} ₽</p>
+                        <s class="old-price">{{ product.price }} ₽</s>
+                    {%  else %}
+                        <p>{{ product.price }} ₽</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <h2>Описание:</h2>
+        <div class="description-block">
+            <div class="text">
+            <p>{{ product.description }}</p>
+            </div>
+        </div>
+        <h2>Характеристики:</h2>
+        <div class="props-block">
+            <div class="text">
+            <table>
+                {% for i in properties %}
+                    <tr>
+                        <td class="prop-name">{{ i.property_name }}: </td>
+                        <td class="prop-value">{{ i.value }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

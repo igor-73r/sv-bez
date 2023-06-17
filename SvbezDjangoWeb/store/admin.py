@@ -3,13 +3,21 @@ from django.urls import resolve
 from .models import *
 
 
+class ProductsCategoriesPropAdmin(admin.TabularInline):
+    model = ProductsCategoriesProperties
+    autocomplete_fields = ('property_name',)
+
+
 @admin.register(ProductsCategories)
 class ProductsCategoriesAdmin(admin.ModelAdmin):
-    filter_horizontal = ('properties',)
+    search_fields = ('category_name',)
+    prepopulated_fields = {"slug": ("category_name",)}
+    inlines = [ProductsCategoriesPropAdmin]
 
 
 class ProductsPropertiesValuesAdmin(admin.TabularInline):  # DynamicModelAdminMixin
     model = ProductsPropertiesValues
+    extra = 40
 
     def get_parent_object_from_request(self, request):
         resolved = resolve(request.path_info)
@@ -28,7 +36,9 @@ class ProductsPropertiesValuesAdmin(admin.TabularInline):  # DynamicModelAdminMi
 
 @admin.register(Products)
 class ProductsAdmin(admin.ModelAdmin):
-    list_display = ('brand', 'model', 'price', 'category')
+    list_display = ('brand', 'model', 'price', 'category', 'is_published')
+    prepopulated_fields = {"slug": ("brand", "model")}
+    autocomplete_fields = ('brand', 'category')
     inlines = [ProductsPropertiesValuesAdmin]
 
     def get_inline_instances(self, request, obj=None):
@@ -44,3 +54,9 @@ class ProductsAdmin(admin.ModelAdmin):
 @admin.register(ProductsProperties)
 class ProductsPropertiesAdmin(admin.ModelAdmin):
     search_fields = ['property_name']
+    prepopulated_fields = {"slug": ("property_name",)}
+
+
+@admin.register(Brands)
+class BrandsAdmin(admin.ModelAdmin):
+    search_fields = ('brand',)

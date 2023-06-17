@@ -149,7 +149,7 @@ footer nav ul li {
     border-radius: var(--text-radius);
 }
 
-@media (max-width: 728px) {
+@media (max-width: 766px) {
     .wrapper {
         padding: 0 10px 100px 10px !important;
     }
@@ -192,26 +192,26 @@ body.tight .wrapper {
     margin-bottom: 50px;
 }
 
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        -moz-transform: translateY(0);
-        -ms-transform: translateY(0);
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    }
-    40% {
-        -moz-transform: translateY(-30px);
-        -ms-transform: translateY(-30px);
-        -webkit-transform: translateY(-30px);
-        transform: translateY(-30px);
-    }
-    60% {
-        -moz-transform: translateY(-15px);
-        -ms-transform: translateY(-15px);
-        -webkit-transform: translateY(-15px);
-        transform: translateY(-15px);
-    }
-}
+/*@keyframes bounce {*/
+/*    0%, 20%, 50%, 80%, 100% {*/
+/*        -moz-transform: translateY(0);*/
+/*        -ms-transform: translateY(0);*/
+/*        -webkit-transform: translateY(0);*/
+/*        transform: translateY(0);*/
+/*    }*/
+/*    40% {*/
+/*        -moz-transform: translateY(-30px);*/
+/*        -ms-transform: translateY(-30px);*/
+/*        -webkit-transform: translateY(-30px);*/
+/*        transform: translateY(-30px);*/
+/*    }*/
+/*    60% {*/
+/*        -moz-transform: translateY(-15px);*/
+/*        -ms-transform: translateY(-15px);*/
+/*        -webkit-transform: translateY(-15px);*/
+/*        transform: translateY(-15px);*/
+/*    }*/
+/*}*/
 .arrow {
     position: fixed;
     bottom: 50px;
