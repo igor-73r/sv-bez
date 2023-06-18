@@ -1,9 +1,6 @@
 from django.db import models
-from django.contrib.admin import ModelAdmin
 from django.urls import reverse
 
-
-# Create your models here.
 
 class ProductsProperties(models.Model):
     property_name = models.CharField(primary_key=True, max_length=255)
@@ -44,10 +41,15 @@ class Brands(models.Model):
 class ProductsCategoriesProperties(models.Model):
     category_name = models.ForeignKey(ProductsCategories, on_delete=models.CASCADE)
     property_name = models.ForeignKey(ProductsProperties, on_delete=models.CASCADE)
-    property_priority = models.IntegerField()
+    property_priority = models.IntegerField(null=True, blank=True)
 
     class Meta:
         ordering = ["property_priority"]
+        unique_together = (('category_name', 'property_name'),)
+
+    def __str__(self):
+        return str(self.property_name)
+
 
 
 class Products(models.Model):
@@ -72,8 +74,8 @@ class Products(models.Model):
     def __str__(self):
         return self.model
 
-    # def get_absolute_url(self):
-    #     return reverse('product', kwargs={'product_id': self.pk})
+    def get_absolute_url(self):
+        return reverse('product_detail', kwargs={'pk': self.slug})
 
 
 class ProductsPropertiesValues(models.Model):
@@ -81,7 +83,7 @@ class ProductsPropertiesValues(models.Model):
                                    on_delete=models.CASCADE,
                                    verbose_name="ID Товара")
 
-    property_name = models.ForeignKey(ProductsProperties,
+    property_name = models.ForeignKey(ProductsCategoriesProperties,
                                       on_delete=models.CASCADE,
                                       verbose_name="Характеристика")
 
@@ -91,7 +93,3 @@ class ProductsPropertiesValues(models.Model):
         verbose_name = 'Значения характеристик'
         verbose_name_plural = 'Значения характеристик'
         unique_together = ['product_id', 'property_name']
-
-    # def __str__(self):
-    #     return self.property_name
-

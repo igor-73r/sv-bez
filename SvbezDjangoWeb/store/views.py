@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import * #Products, ProductsPropertiesValues, ProductsCategories
+from .models import Products, ProductsPropertiesValues
 from django.template.defaulttags import register
 
 
@@ -18,9 +18,5 @@ def store_view(request):
 
 def product_view(request, pk):
     product = Products.objects.get(slug=pk)
-    ordered_properties = product.category.properties.all().order_by('productscategoriesproperties')
-    print(ordered_properties)
-
-    properties = ProductsPropertiesValues.objects.filter(product_id=product.id,
-                                                         property_name__in=ordered_properties)
+    properties = ProductsPropertiesValues.objects.filter(product_id=product.id).order_by('property_name')
     return render(request, "store/product_detail.html", locals())

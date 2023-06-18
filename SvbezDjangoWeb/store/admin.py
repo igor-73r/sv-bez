@@ -26,10 +26,10 @@ class ProductsPropertiesValuesAdmin(admin.TabularInline):  # DynamicModelAdminMi
         return None
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        products_pk = self.get_parent_object_from_request(request).pk
+        products_category = self.get_parent_object_from_request(request).category
         if db_field.name == "property_name":
-            product_category = Products.objects.get(pk=products_pk).category
-            kwargs["queryset"] = product_category.properties.all()
+            product_cp = ProductsCategoriesProperties.objects.filter(category_name=products_category)
+            kwargs["queryset"] = product_cp.order_by('property_priority')
             print(kwargs['queryset'])
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
