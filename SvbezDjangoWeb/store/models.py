@@ -51,7 +51,6 @@ class ProductsCategoriesProperties(models.Model):
         return str(self.property_name)
 
 
-
 class Products(models.Model):
     is_published = models.BooleanField("Опубликовать", default=True)
     brand = models.ForeignKey(Brands, null=True, on_delete=models.SET_NULL, verbose_name="Бренд")
