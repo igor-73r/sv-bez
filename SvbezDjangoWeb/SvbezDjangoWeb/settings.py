@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
+CSRF_TRUSTED_ORIGINS = ['https://svbez.ru', 'https://www.svbez.ru']
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -90,7 +92,7 @@ else:
             'USER': USER_NAME,
             'PASSWORD': USER_PASSWORD,
             'HOST': 'localhost',
-            'PORT': '',
+            'PORT': '5432',
         }
     }
 
