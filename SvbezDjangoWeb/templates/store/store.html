@@ -8,8 +8,45 @@
 <link rel="stylesheet" href="{% static 'css/product_card.css' %}">
 {% endblock %}
 
+{% block left-side-bar %}
+    <section class="left-side-bar">
+        {% if form %}
+            <section class="form">
+                {{ form }}
+            </section>
+        {% endif %}
+    </section>
+{% endblock %}
+
 {% block content %}
 
+{#{% if form %}#}
+{#    <section class="form">#}
+{#        {{ form }}#}
+{#    </section>#}
+{#{% endif %}#}
+
+<section class="categories">
+    <div class="headline" id="category_head">
+        Категории
+    </div>
+    <div class="cat_data">
+        {% for cat in categories %}
+            {% if forloop.first %}
+                <a href="/store/">
+                    <div class="category_block">
+                        Все
+                    </div>
+                </a>
+            {% endif %}
+            <a href="/store/f~category={{ cat.id }}">
+                <div class="category_block">
+                    {{ cat.category_name }}
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+</section>
 
 <section class="cards">
     {% for product in products %}

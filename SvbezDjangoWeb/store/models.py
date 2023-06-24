@@ -3,7 +3,7 @@ from django.urls import reverse
 
 
 class ProductsProperties(models.Model):
-    property_name = models.CharField(primary_key=True, max_length=255)
+    property_name = models.CharField(unique=True, max_length=255)
     slug = models.SlugField('URL', max_length=255, unique=True, db_index=True)
 
     class Meta:
@@ -15,7 +15,7 @@ class ProductsProperties(models.Model):
 
 
 class ProductsCategories(models.Model):
-    category_name = models.CharField(primary_key=True, max_length=255)
+    category_name = models.CharField(max_length=255, unique=True)
     properties = models.ManyToManyField(ProductsProperties, through='ProductsCategoriesProperties')
     slug = models.SlugField('URL', max_length=255, unique=True, db_index=True)
 
@@ -28,7 +28,7 @@ class ProductsCategories(models.Model):
 
 
 class Brands(models.Model):
-    brand = models.CharField(primary_key=True, max_length=255)
+    brand = models.CharField(max_length=255, unique=True)
 
     class Meta:
         verbose_name = 'Бренд'
@@ -53,7 +53,8 @@ class ProductsCategoriesProperties(models.Model):
 
 class Products(models.Model):
     is_published = models.BooleanField("Опубликовать", default=True)
-    brand = models.ForeignKey(Brands, null=True, on_delete=models.SET_NULL, verbose_name="Бренд")
+    brand = models.ForeignKey(Brands, to_field='brand', null=True,
+                              on_delete=models.SET_NULL, verbose_name="Бренд")
     model = models.CharField("Модель", max_length=255)
     slug = models.SlugField('URL', max_length=255, unique=True, db_index=True)
     price = models.IntegerField("Цена")

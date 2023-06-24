@@ -5,8 +5,14 @@ html {
     --clr4: tomato;
     --border-radius: 7px;
     --text-radius: 50em;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Nunito Sans', sans-serif;
 }
+
+/*Надо убрать*/
+.wrapper {
+    display: flex;
+}
+
 
 body {
     background: var(--clr1);
@@ -26,6 +32,8 @@ body *, body :after, body :before {
     max-width: 960px;
     min-width: 360px;
     margin: 0 auto;
+    /*margin-left: 20px;*/
+    /*margin-right: auto;*/
     position: relative;
     flex-direction: column; /*---ADDED---*/
     align-items: center; /*---ADDED---*/
