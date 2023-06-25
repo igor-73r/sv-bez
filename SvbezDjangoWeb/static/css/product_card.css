@@ -106,18 +106,25 @@ section.categories .category_block {
 
 }
 
-
 .left-side-bar {
-    /*right: 0;*/
     position: absolute;
     padding: 10px;
-    margin-left: 10%;
-    width: min-content;
+    left: -230px;
+    margin-left: auto;
+    width: 210px;
+    height: min-content;
     margin-top: 210px;
-    /*margin-bottom: 150px;*/
-    /*height: 100%;*/
 }
 
+@media (max-width: 1500px){
+    .left-side-bar {
+        position: relative;
+        margin-top: 50px;
+        width: 100%;
+        left: 0;
+    }
+
+}
 
 .form {
     padding: 0;

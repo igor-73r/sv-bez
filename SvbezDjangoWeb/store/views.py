@@ -1,31 +1,21 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from .models import Products, ProductsPropertiesValues, ProductsCategories
-from django.template.defaulttags import register
 from .filters import filtered_products
-from .forms import BaseFilterForm
+from .forms import BaseFilterForm, CategoryFilterForm
 
-
-@register.filter
-def get_range(value):
-    return range(value)
 
 def home_page(request):
     return render(request, "home.html", locals())
 
 
-def store_view(request):
+def store_view(request, query=None):
     form = BaseFilterForm()
     categories = ProductsCategories.objects.all()
     products = Products.objects.all()
-    return render(request, "store/store.html", locals())
-
-
-def filtered_store_view(request, query):
     if query is not None:
-        categories = ProductsCategories.objects.all()
         products = filtered_products(query)
-        form = BaseFilterForm(products)
-        return render(request, "store/store.html", locals())
+        form = CategoryFilterForm(products)
+    return render(request, "store/store.html", locals())
 
 
 def product_view(request, slug):

@@ -8,12 +8,6 @@ html {
     font-family: 'Nunito Sans', sans-serif;
 }
 
-/*Надо убрать*/
-.wrapper {
-    display: flex;
-}
-
-
 body {
     background: var(--clr1);
     padding: 50px 0 0 0;

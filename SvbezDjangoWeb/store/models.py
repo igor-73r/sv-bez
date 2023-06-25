@@ -93,3 +93,6 @@ class ProductsPropertiesValues(models.Model):
         verbose_name = 'Значения характеристик'
         verbose_name_plural = 'Значения характеристик'
         unique_together = ['product_id', 'property_name']
+
+    def __str__(self):
+        return self.value
