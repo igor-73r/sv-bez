@@ -22,13 +22,13 @@
     <div class="cat_data">
         {% for cat in categories %}
             {% if forloop.first %}
-                <a href="/store/">
+                <a href="{% url 'base_store' %}">
                     <div class="category_block">
                         Все
                     </div>
                 </a>
             {% endif %}
-            <a href="/store/f~category={{ cat.id }}">
+            <a href="{% url 'cat_store' cat.id %}">
                 <div class="category_block">
                     {{ cat.category_name }}
                 </div>
@@ -39,11 +39,13 @@
 
 <section class="left-side-bar">
     {% if form %}
+    <form method="GET">
         <section class="form">
             {{ form }}
         </section>
     {% endif %}
-{#    <input type="submit" value="Apply">#}
+    <input type="submit" value="Apply">
+    </form>
 </section>
 
 <section class="cards">

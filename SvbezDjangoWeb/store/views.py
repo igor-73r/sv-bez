@@ -1,20 +1,37 @@
-from django.shortcuts import render
+from django.core.exceptions import ValidationError
+from django.shortcuts import render, HttpResponse, redirect
 from .models import Products, ProductsPropertiesValues, ProductsCategories
-from .filters import filtered_products
-from .forms import BaseFilterForm, CategoryFilterForm
+from .filters import filtered_products, extended_filter_products
+from .forms import CategoryFilterForm
 
 
 def home_page(request):
     return render(request, "home.html", locals())
 
 
-def store_view(request, query=None):
-    form = BaseFilterForm()
+def generate_query(form):
+    print(form.cleaned_data)
+    query = ""
+    for i in form.cleaned_data:
+        if form.cleaned_data[i]:
+            query += f"{i}="
+            for j in form.cleaned_data[i]:
+                query += f"&{j}"
+            query += "&&"
+    return query
+
+
+def base_store_view(request):
     categories = ProductsCategories.objects.all()
-    products = Products.objects.all()
-    if query is not None:
-        products = filtered_products(query)
-        form = CategoryFilterForm(products)
+    products = filtered_products(request.GET)
+    form = CategoryFilterForm(request.GET, products=products)
+    return render(request, "store/store.html", locals())
+
+
+def store_cat_view(request, category):
+    categories = ProductsCategories.objects.all()
+    products = extended_filter_products(request.GET, category)
+    form = CategoryFilterForm(request.GET, products=products, category=category)
     return render(request, "store/store.html", locals())
 
 

@@ -1,28 +1,28 @@
 import re
-from .models import Products
+from .models import Products, ProductsPropertiesValues, ProductsProperties
 
 
-def parse_query_string(query_string):
-    pattern = r'(\w+)=([^&]+)'
-    matches = re.findall(pattern, query_string)
-    result = {}
-    for match in matches:
-        if match[0] in result:
-            result[match[0]] += (match[1],)
-        else:
-            result[match[0]] = (match[1],)
-    print(result)
-    return result
-
-
-def filtered_products(query_string):
-    filter_parameters = parse_query_string(query_string)
+def filtered_products(props):
     products = Products.objects.all()
-    if 'brand' in filter_parameters:
-        products = products.filter(brand__in=filter_parameters['brand'])
-    if 'sale' in filter_parameters:
-        products = products.filter(sale__isnull=False)
-    if 'category' in filter_parameters:
-        products = products.filter(category_id__in=filter_parameters['category'])
+    for i in props:
+        print(props.getlist(i))
+        filter_str = i + '__in'
+        products = products.filter(**{filter_str: props.getlist(i)})
+
     return products
 
+
+def extended_filter_products(props, category):
+    products = Products.objects.filter(category_id=category)
+    new_products = products
+    print(new_products)
+    if props:
+        for i in products:
+            property_value = ProductsPropertiesValues.objects.filter(product_id=i.id)
+            for object in property_value:
+                property_slug = object.property_name.property_name.slug
+                if object.value not in props.getlist(property_slug) and property_slug in props:
+                    new_products = new_products.exclude(pk=i.pk)
+                """print(object.property_name.property_name.slug, object.value)"""
+    # print(products)
+    return new_products
