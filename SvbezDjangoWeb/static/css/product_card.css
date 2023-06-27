@@ -114,6 +114,14 @@ section.categories .category_block {
     width: 210px;
     height: min-content;
     margin-top: 210px;
+    margin-bottom: 200px;
+}
+.wrapper{
+    min-height: 2000px;
+}
+
+input[type="number" i]{
+    max-width: 48%;
 }
 
 @media (max-width: 1500px){
@@ -126,6 +134,6 @@ section.categories .category_block {
 
 }
 
-.form {
-    padding: 0;
-}
+/*.form {*/
+/*    padding: 0;*/
+/*}*/

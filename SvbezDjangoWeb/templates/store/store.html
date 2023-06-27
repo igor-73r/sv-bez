@@ -38,17 +38,27 @@
 </section>
 
 <section class="left-side-bar">
+{#    <div class="headline" id="category_head">#}
+{#        Фильтр#}
+{#    </div>#}
     {% if form %}
     <form method="GET">
-        <section class="form">
-            {{ form }}
-        </section>
+    {% for f in form %}
+            {% if f.name == 'price_min' %}
+                Цена: <br>
+                {{ form.price_min }} {{ form.price_max }}
+            {% elif f.name == 'price_max' %}
+            {% else %}
+                {{ f.label_tag }} {{ f }}
+            {% endif %}
+        {% endfor %}
     {% endif %}
     <input type="submit" value="Apply">
     </form>
 </section>
 
 <section class="cards">
+{% if products %}
     {% for product in products %}
         {% if product.is_published %}
             <div class="card">
@@ -75,6 +85,9 @@
             </div>
         {% endif %}
     {% endfor %}
+{% else %}
+    <div>Нет совпадений</div>
+{% endif %}
 </section>
 
 {% endblock %}

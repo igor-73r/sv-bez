@@ -1,19 +1,27 @@
-import re
-from .models import Products, ProductsPropertiesValues, ProductsProperties
+from .models import Products, ProductsPropertiesValues
 
 
 def filtered_products(props):
     products = Products.objects.all()
-    for i in props:
-        print(props.getlist(i))
-        filter_str = i + '__in'
-        products = products.filter(**{filter_str: props.getlist(i)})
-
+    price_range = [props.get('price_min'), props.get('price_max')]
+    if price_range[0]:
+        products = products.filter(price__gte=price_range[0])
+    if price_range[1]:
+        products = products.filter(price__lte=price_range[1])
+    if 'brand' in props:
+        products = products.filter(brand__in=props.getlist('brand'))
     return products
 
 
 def extended_filter_products(props, category):
     products = Products.objects.filter(category_id=category)
+    price_range = [props.get('price_min'), props.get('price_max')]
+    if 'brand' in props:
+        products = products.filter(brand__in=props.getlist('brand'))
+    if price_range[0]:
+        products = products.filter(price__gte=price_range[0])
+    if price_range[1]:
+        products = products.filter(price__lte=price_range[1])
     new_products = products
     print(new_products)
     if props:
@@ -23,6 +31,4 @@ def extended_filter_products(props, category):
                 property_slug = object.property_name.property_name.slug
                 if object.value not in props.getlist(property_slug) and property_slug in props:
                     new_products = new_products.exclude(pk=i.pk)
-                """print(object.property_name.property_name.slug, object.value)"""
-    # print(products)
     return new_products
