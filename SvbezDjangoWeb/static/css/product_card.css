@@ -221,3 +221,10 @@ input[type="checkbox"] {
     display: flex;
     justify-content: space-between;
 }
+
+.product-image {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}

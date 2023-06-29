@@ -78,9 +78,11 @@
     {% for product in products %}
         {% if product.is_published %}
             <div class="card">
-                {% if product.image %}
-                    <img src="{{ product.image.url }}">
-                {% endif %}
+                <div class="product-image">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}">
+                    {% endif %}
+                </div>
                 <div class="content">
                     <div class="headline">
                         <a href="{% url 'product_detail' product.slug %}">{{product.brand}} {{product.model}}</a>
