@@ -89,6 +89,10 @@ section.categories .category_block {
     left: 0;
 }
 
+section.categories .category_block:hover {
+    transform: scale(105%);
+}
+
 #category_head{
     position: relative;
     padding-top: 5px;
@@ -109,9 +113,9 @@ section.categories .category_block {
 .left-side-bar {
     position: absolute;
     padding: 10px;
-    left: -230px;
+    left: -265px;
     margin-left: auto;
-    width: 210px;
+    width: 245px;
     height: min-content;
     margin-top: 210px;
     margin-bottom: 200px;
@@ -120,8 +124,24 @@ section.categories .category_block {
     min-height: 2000px;
 }
 
-input[type="number" i]{
-    max-width: 48%;
+input[type="number"] {
+    background-color: var(--clr2);
+    vertical-align: top;
+    padding: 0;
+    height: 30px;
+    text-indent: 10px;
+    width: 47%;
+    border: none;
+    font-size: 14px;
+    border-radius: 3px;
+}
+
+input[type="number"]:focus {
+	outline: 2px solid tomato;
+}
+
+input[type="checkbox"] {
+    z-index: 9999;
 }
 
 @media (max-width: 1500px){
@@ -134,6 +154,70 @@ input[type="number" i]{
 
 }
 
-/*.form {*/
-/*    padding: 0;*/
-/*}*/
+.drop-down-data {
+    display: none;
+}
+
+.drop-down-data #id_brand {
+    display: block;
+}
+
+.label {
+    font-weight: bold;
+}
+
+.label:hover{
+    color: tomato;
+}
+
+.item {
+    margin: 10px 5px;
+    padding: 7px;
+    background-color: var(--clr1);
+    border-radius: var(--border-radius);
+}
+
+.item:hover {
+    /*background-color: lightgray;*/
+    transform: scale(105%);
+}
+
+.item:hover .drop-down-data{
+    color: black;
+}
+
+.item:hover #price{
+    color: black;
+}
+
+.price-field {
+    margin: 5px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.my-button {
+    margin: 0 5px 10px 5px;
+    width: 103px;
+    background-color: tomato;
+    color: var(--clr2);
+    border-width: 0;
+    border-radius: var(--border-radius);
+    /*height: 30px;*/
+    font-weight: 600;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.my-button:hover{
+    transform: scale(105%);
+}
+
+#dismiss{
+    background-color: lightslategray;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}

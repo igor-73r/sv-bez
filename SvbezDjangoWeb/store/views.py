@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from .models import Products, ProductsPropertiesValues, ProductsCategories
 from .filters import filtered_products, extended_filter_products
 from .forms import CategoryFilterForm
@@ -19,6 +19,8 @@ def price_field_validation(request):
 def base_store_view(request):
     categories = ProductsCategories.objects.all()
     props = request.GET
+    if 'dismiss' in props:
+        return redirect('base_store')
     if request.GET.get('price_min') or request.GET.get('price_max'):
         props = price_field_validation(request)
     products = filtered_products(props)
@@ -29,6 +31,8 @@ def base_store_view(request):
 def store_cat_view(request, category):
     categories = ProductsCategories.objects.all()
     props = request.GET
+    if 'dismiss' in props:
+        return redirect('cat_store', category)
     if request.GET.get('price_min') or request.GET.get('price_max'):
         props = price_field_validation(request)
     products = extended_filter_products(props, category)

@@ -2,6 +2,18 @@ $(document).ready(function($) {
     const header = $('.header')
     let prevScroll = $(window).scrollTop()
     let currentScroll
+    let elems = document.getElementsByClassName('drop-down-data')
+    $(document.getElementById('id_brand')).parent().show()
+    for (let elem in elems){
+        let this_element = $(elems[elem]).children('div')
+        let element_id = this_element.attr('id')
+        if($.cookie(element_id) != null && element_id != null){
+            if($.cookie(element_id) === "show"){
+                this_element.parent().show()
+            }
+        }
+
+    }
     $(window).on('scroll', function() {
 
         //ADD .TIGHT
@@ -38,3 +50,32 @@ $(document).ready(function($) {
 $('.arrow').click(function(){
     $("html").animate({ scrollTop: $('html').prop("scrollHeight")}, 1200);
 });
+
+
+$('.label').click(function(){
+    let element = $(this).parent().children('.drop-down-data')
+    if(element.is(":hidden")){
+        element.show();
+        $.cookie(element.children('div').attr('id'), 'show')
+    }else{
+        element.hide();
+        if ($.cookie(element.children('div').attr('id'))){
+            $.removeCookie(element.children('div').attr('id'));
+        }
+    }
+});
+
+function clearMyCookie(){
+    let cookies = $.cookie()
+    for (let cookie in cookies){
+        if($.cookie(cookie) === "show"){
+            $.removeCookie(cookie)
+        }
+    }
+}
+
+$('#dismiss').click(clearMyCookie);
+
+$('.category_block').click(clearMyCookie);
+
+

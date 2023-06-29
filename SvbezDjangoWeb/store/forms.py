@@ -6,7 +6,8 @@ from django.db.models import Max, Min
 class CategoryFilterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(CategoryFilterForm, self).__init__(*args)
-
+        self.label_suffix = ""
+        custom_checkbox_widget = forms.CheckboxSelectMultiple(attrs={'class': 'custom-checkbox'})
         if 'category' in kwargs:
             products = Products.objects.filter(category=kwargs.get('category'))
             brands_list = products.values_list('brand', flat=True).distinct()
@@ -20,7 +21,7 @@ class CategoryFilterForm(forms.Form):
         brands = ()
         for i in brands_list:
             brands += (i, i),
-        self.fields['brand'] = forms.MultipleChoiceField(choices=brands, label='Brand', required=False,
+        self.fields['brand'] = forms.MultipleChoiceField(choices=brands, label='Бренд', required=False,
                                                          widget=forms.CheckboxSelectMultiple)
         self.fields['price_min'] = forms.IntegerField(required=False,
                                                       widget=forms.NumberInput(attrs={
