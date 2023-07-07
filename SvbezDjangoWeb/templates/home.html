@@ -10,7 +10,7 @@
         <div class="welcome-interactive">
             <div class="welcome-call">
                 <p>Установка современных систем безопасности</p><br>
-                <a href="#">Связаться</a>
+                <a id="button" href="#">Связаться</a>
             </div>
             <div class="welcome-image">
                 <img src="{% static 'images/welcome.jpg' %}" alt="">
@@ -63,4 +63,43 @@ cовременные системы видеонаблюдения:
         </div>
 
     </section>
+
+    <section id="our_partners">
+        <div class="short-info">
+            <h1>Наши партнеры</h1>
+            <p>Мы сотрудничаем только с проверенными поставщиками и производителями, чтобы вы получали самое лучшее!</p>
+        </div>
+        <div class="partners-cards">
+            {% for i in partners %}
+                <div class="brand-card">
+                    <a href="store/?brand={{ i.brand }}">
+                        {% if i.brand_logo %}
+                            <img src="{{ i.brand_logo.url }}" alt="">
+                        {% else %}
+                            <p>{{ i.brand }}</p>
+                        {% endif %}
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="our_customers">
+        <div class="short-info">
+            <h1>Наши клиенты</h1>
+            <p>Нам доверяют как крупные государственные компании, так и небольшие частные предприятия</p>
+        </div>
+        <div class="customer-cards">
+            {% for i in customers %}
+                <div class="customer-card">
+                    <div class="descr">{{ i.company_description }}</div>
+                    {% if i.company_logo %}
+                        <img id="logo" src="{{ i.company_logo.url }}" alt="">
+{#                    {% else %}#}
+                    {% endif %}
+                    <p id="company_name">{{ i.company_name }}</p>
+                </div>
+            {% endfor %}
+        </div>
+</section>
 {%  endblock %}

@@ -145,3 +145,98 @@
     line-height: 31px;
     height: 100%;
 }
+
+#our_partners {
+    background: none;
+    width: 115%;
+    border-radius: var(--header-radius);
+}
+
+.partners-cards {
+    display: flex;
+
+}
+
+.brand-card {
+    /*height: 200px;*/
+    display: flex;
+    align-items: center;
+    width: min-content;
+    background: white;
+    padding: 10px;
+    border-radius: var(--header-radius);
+    margin: 20px;
+
+}
+
+.brand-card img{
+    height: 150px;
+    border-radius: var(--header-radius);
+}
+
+.brand-card p {
+    font-size: 30px;
+    font-weight: 700;
+    padding: 30px;
+}
+
+.brand-card:hover{
+    transform: scale(105%);
+}
+
+.welcome-buttons #button:hover {
+    transform: scale(105%);
+}
+
+#our_customers {
+    background: none;
+    width: 115%;
+    border-radius: var(--header-radius);
+    padding: 0 50px 100px 50px;
+}
+
+.customer-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: var(--header-radius);
+    width: min-content;
+    padding: 30px 0;
+    height: 400px;
+}
+
+.customer-card img {
+    width: 300px;
+    border-radius: var(--header-radius);
+}
+
+#company_name {
+    margin: 0 30px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.descr {
+    display: none;
+    width: 300px;
+    white-space: pre-wrap;
+    padding: 40px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.customer-card:hover .descr{
+    transition: all 0.5s ease 0s;
+    display: block;
+}
+
+.customer-card:hover #company_name{
+    display: none;
+}
+
+.customer-card:hover img{
+    display: none;
+}
