@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
-from .models import Products, ProductsPropertiesValues, ProductsCategories
+from .models import Products, ProductsPropertiesValues, ProductsCategories, Brands, OurCustomers
 from .filters import filtered_products, extended_filter_products
 from .forms import CategoryFilterForm
 
 
 def home_page(request):
+    partners = Brands.objects.all().filter(is_partner=True)
+    customers = OurCustomers.objects.all()
     return render(request, "home.html", locals())
 
 

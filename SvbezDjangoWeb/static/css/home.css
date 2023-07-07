@@ -1,0 +1,242 @@
+* {
+    scroll-behavior: smooth;
+}
+
+#welcome-block {
+    margin-top: 50px;
+    padding: 50px;
+    background: none;
+    height: 150%;
+    width: 120%;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.welcome-image img {
+    width: 468px;
+    height: 468px;
+    flex-shrink: 0;
+    border-radius: 117px;
+}
+
+.welcome-interactive{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.welcome-call {
+    width: 500px;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 55px;
+}
+
+.welcome-call a {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 0;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 20px;
+    background: #FF4747;
+}
+
+.welcome-call a:hover {
+    box-shadow: 0 11px 50px -10px rgba(0, 0, 0, 0.25);
+}
+
+.welcome-buttons {
+    margin-top: 50px;
+    display: flex;
+    height: auto;
+    justify-content: space-between;
+}
+
+.welcome-buttons #button {
+    background: white;
+    color: #000;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 0;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+#about_us{
+    width: 115%;
+    border-radius: var(--header-radius);
+    padding: 10px 50px  50px 50px;
+}
+
+.short-info {
+    text-align: center;
+}
+
+.short-info h1 {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.short-info p {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 40px;
+    white-space: pre-wrap;
+    margin-bottom: 50px;
+}
+
+.about-item {
+    display: flex;
+    background: var(--clr3);
+    border-radius: var(--header-radius);
+    padding: 30px;
+    margin: 30px 0;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-item#second{
+    flex-direction: row-reverse;
+    margin-left: auto;
+}
+
+.about-item#second, .about-item#first {
+    max-width: 820px;
+}
+
+.about-item#third{
+    max-width: 880px;
+}
+
+.about-item img{
+    border-radius: var(--header-radius);
+}
+
+.image {
+    display: flex;
+    align-items: center;
+}
+
+#first img, #second img {
+    margin: 0;
+    width: 275px;
+    height: 184px;
+}
+
+#third img {
+    width: 323px;
+    height: 216px;
+}
+
+.text {
+    white-space: pre-wrap;
+    background: var(--clr2);
+    border-radius: var(--header-radius);
+    padding: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 31px;
+    height: 100%;
+}
+
+#our_partners {
+    background: none;
+    width: 115%;
+    border-radius: var(--header-radius);
+}
+
+.partners-cards {
+    display: flex;
+
+}
+
+.brand-card {
+    /*height: 200px;*/
+    display: flex;
+    align-items: center;
+    width: min-content;
+    background: white;
+    padding: 10px;
+    border-radius: var(--header-radius);
+    margin: 20px;
+
+}
+
+.brand-card img{
+    height: 150px;
+    border-radius: var(--header-radius);
+}
+
+.brand-card p {
+    font-size: 30px;
+    font-weight: 700;
+    padding: 30px;
+}
+
+.brand-card:hover{
+    transform: scale(105%);
+}
+
+.welcome-buttons #button:hover {
+    transform: scale(105%);
+}
+
+#our_customers {
+    background: none;
+    width: 115%;
+    border-radius: var(--header-radius);
+    padding: 0 50px 100px 50px;
+}
+
+.customer-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: var(--header-radius);
+    width: min-content;
+    padding: 30px 0;
+    height: 400px;
+}
+
+.customer-card img {
+    width: 300px;
+    border-radius: var(--header-radius);
+}
+
+#company_name {
+    margin: 0 30px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.descr {
+    display: none;
+    width: 300px;
+    white-space: pre-wrap;
+    padding: 40px;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.customer-card:hover .descr{
+    transition: all 0.5s ease 0s;
+    display: block;
+}
+
+.customer-card:hover #company_name{
+    display: none;
+}
+
+.customer-card:hover img{
+    display: none;
+}

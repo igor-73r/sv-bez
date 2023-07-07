@@ -1,9 +1,13 @@
 html {
     --clr1: #ddd;
-    --clr2: #efefef;
-    --clr3: #333;
-    --clr4: tomato;
+    /*--clr2: #efefef;*/
+    /*--clr3: #333;*/
+    /*--clr4: tomato;*/
+    --clr2: #ffffff;
+    --clr3: #F5F5F5;
+    --clr4: #FF4747;
     --border-radius: 7px;
+    --header-radius: 43px;
     --text-radius: 50em;
     font-family: 'Nunito Sans', sans-serif;
 }
@@ -44,21 +48,15 @@ body *, body :after, body :before {
 
 header {
     background: var(--clr2);
-    padding: 50px;
-    width: 100%;
-    border-radius: var(--border-radius);
-    /*position: relative;*/
+    /*padding: 50px;*/
+    border-radius: var(--header-radius);
     z-index: 99;
-}
-
-.header { /*---ADDED---*/
-    position: -webkit-sticky;
     position: sticky;
     width: 110%;
-    /*margin: 10px;*/
+    height: 150px;
     top: 15px;
     transition: 0.7s;
-    box-shadow: 0px 22px 54px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 11px 50px -10px rgba(0, 0, 0, 0.25);
 }
 
 .header_hidden {
@@ -69,11 +67,11 @@ header {
     background: var(--clr2);
     padding: 50px;
     position: fixed;
-    top: 0px;
+    top: 0;
     max-width: 960px;
     width: calc(100% - 20px);
     min-width: 360px;
-    border-radius: 0px 0px var(--border-radius) var(--border-radius);
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
 }
 
 .fluid .wrap.sticky header {
@@ -81,24 +79,65 @@ header {
 }
 
 header .logo {
-    background: var(--clr1);
-    width: 50px;
-    height: 50px;
-    border-radius: var(--text-radius);
-}
-header nav {
     position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translate(-50px, -50%);
+    left: 50px;
 }
+
+header .logo a {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 120px;
+    height: 33px;
+    flex-shrink: 0;
+}
+
+header .logo #title {
+    color: #000;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0.6px;
+    /*margin-bottom: 5px;*/
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header nav ul{
+    width: 340px;
+    margin: 0;
+    justify-content: space-around;
+    display: flex;
+    padding: 0;
+}
+
 header nav ul li {
-    display: inline-block;
     list-style: none;
-    width: 60px;
-    height: 10px;
-    background: var(--clr1);
-    border-radius: var(--text-radius);
+}
+
+header nav ul li a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 800;
+}
+
+header nav ul li span {
+    padding: 8px;
+    flex-shrink: 0;
+    border-radius: 23px;
+    background: #FEE;
 }
 
 section {

@@ -29,6 +29,9 @@ class ProductsCategories(models.Model):
 
 class Brands(models.Model):
     brand = models.CharField(max_length=255, unique=True)
+    brand_logo = models.ImageField(upload_to='photos/brands-logos/',
+                                   null=True, blank=True, max_length=255, verbose_name="Логотип")
+    is_partner = models.BooleanField("Партнер", default=False)
 
     class Meta:
         verbose_name = 'Бренд'
@@ -90,9 +93,23 @@ class ProductsPropertiesValues(models.Model):
     value = models.CharField("Значение", max_length=255)
 
     class Meta:
-        verbose_name = 'Значения характеристик'
+        verbose_name = 'Значение характеристики'
         verbose_name_plural = 'Значения характеристик'
         unique_together = ['product_id', 'property_name']
 
     def __str__(self):
         return self.value
+
+
+class OurCustomers(models.Model):
+    company_name = models.CharField("Название компании", max_length=255)
+    company_logo = models.ImageField(upload_to='photos/customers_companies/',
+                                     null=True, blank=True, max_length=255, verbose_name="Логотип компании")
+    company_description = models.TextField("Описание")
+
+    class Meta:
+        verbose_name = 'Наш клиент'
+        verbose_name_plural = 'Наши клиенты'
+
+    def __str__(self):
+        return self.company_name

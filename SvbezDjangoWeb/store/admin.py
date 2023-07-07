@@ -60,3 +60,6 @@ class ProductsPropertiesAdmin(admin.ModelAdmin):
 @admin.register(Brands)
 class BrandsAdmin(admin.ModelAdmin):
     search_fields = ('brand',)
+
+
+admin.site.register(OurCustomers)

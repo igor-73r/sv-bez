@@ -12,8 +12,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,500;6..12,600;6..12,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     {% block extra_links %}
     {% endblock %}
+
+    <style>
+        .material-symbols-rounded {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 48;
+            font-size: 48px;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,14 +33,22 @@
 <div class="wrapper">
     <div class="wrap">
         <header class="header">
-            <div class="logo"></div>
-            <nav>
+            <div class="logo">
+                <a href="{% url 'home' %}" id="title">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="34" viewBox="0 0 22 34" fill="none">
+                  <circle cx="11" cy="23" r="10" stroke="#FF4747" stroke-width="2"/>
+                  <path d="M5.5 1L5.5 23" stroke="#FF4747" stroke-width="2" stroke-linecap="round"/>
+                </svg>SvBez</a>
+            </div>
+            <nav class="header-buttons">
                 <ul>
-                    <li><a href="{% url 'home' %}">Главная</a></li>
-                    <li><a href="{% url 'base_store' %}">Магазин</a></li>
-                    <li><a href="/admin/">Админ</a></li>
+                    <li><a href="{% url 'home' %}"><span class="material-symbols-rounded">home</span>Главная</a></li>
+                    <li><a href="#"><span class="material-symbols-rounded">handshake</span>Услуги</a></li>
+                    <li><a href="{% url 'base_store' %}"><span class="material-symbols-rounded">storefront</span>Товары</a></li>
+{#                    <li><a href="/admin/">Админ</a></li>#}
                 </ul>
             </nav>
+{#            <a href="/admin/">Админ</a>#}
         </header>
         {% block content %}
         {% endblock %}
