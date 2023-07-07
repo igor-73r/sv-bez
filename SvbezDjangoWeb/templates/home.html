@@ -1,1 +1,66 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_links %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" type="text/css" media="all">
+{% endblock %}
+
+{% block content %}
+    <section id="welcome-block">
+        <div class="welcome-interactive">
+            <div class="welcome-call">
+                <p>Установка современных систем безопасности</p><br>
+                <a href="#">Связаться</a>
+            </div>
+            <div class="welcome-image">
+                <img src="{% static 'images/welcome.jpg' %}" alt="">
+            </div>
+        </div>
+        <div class="welcome-buttons">
+            <a id="button" href="#about_us">О нас</a>
+            <a id="button" href="#our_partners">Наши партнеры</a>
+            <a id="button" href="#our_customers">Наши клиенты</a>
+            <a id="button" href="#contacts">Контакты</a>
+        </div>
+    </section>
+
+    <section id="about_us">
+        <div class="short-info">
+            <h1>О нас</h1>
+            <p>Наша компания работает на рынке слаботочных
+систем уже более 10 лет</p>
+        </div>
+
+        <div class="about-item" id="first">
+            <div class="text">Основное направление деятельности
+нашей компании - это монтаж систем
+видеонаблюдения, а также продажа
+оборудования систем видеонаблюдения.</div>
+            <div class="image">
+                <img src="{% static 'images/camera-installation.jpg' %}" alt="">
+            </div>
+        </div>
+
+        <div class="about-item" id="second">
+            <div class="text">Мы используем и реализуем только
+cовременные системы видеонаблюдения:
+видеокамеры, мониторы,
+панели управления и пр.</div>
+            <div class="image">
+                <img src="{% static 'images/modern-security.jpg' %}" alt="">
+            </div>
+        </div>
+
+        <div class="about-item" id="third">
+            <div class="text">Мы сотрудничаем с коммерческими и
+некоммерческими организациями, работаем с
+физическими лицами, и обслуживаем
+объекты любого масштаба: от дома или
+квартиры до крупнейшего предприятия.</div>
+            <div class="image">
+                <img src="{% static 'images/handshake.jpg' %}" alt="">
+            </div>
+        </div>
+
+    </section>
+{%  endblock %}
