@@ -1,9 +1,16 @@
+import uuid
 import os
-import hashlib
 
 
-def hash_upload(instance, filename):
-    instance.my_file.open()  # make sure we're at the beginning of the file
-    contents = instance.my_file.read()  # get the contents
-    fname, ext = os.path.splitext(filename)
-    return "{0}_{1}{2}".format(fname, hashlib.sha256().update(contents), ext)  # assemble the filename
+def encrypt(instance, filename):
+    folder = ''
+    match instance._meta.db_table:
+        case 'store_brands':
+            folder = 'photos/brands-logos/'
+        case 'store_products':
+            folder = 'photos/products/'
+        case 'store_ourcustomers':
+            folder = 'photos/customers_companies/'
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join(folder, filename)
