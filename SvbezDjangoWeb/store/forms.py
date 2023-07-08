@@ -3,6 +3,12 @@ from .models import ProductsCategoriesProperties, ProductsPropertiesValues, Prod
 from django.db.models import Max, Min
 
 
+class FeedbackForm(forms.Form):
+    username = forms.CharField(max_length=255, label="Как к вам обращаться?", required=True)
+    phone_number = forms.CharField(max_length=11, required=True, label="Номер телефона")
+    email = forms.EmailField(required=True, label="Email")
+
+
 class CategoryFilterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(CategoryFilterForm, self).__init__(*args)

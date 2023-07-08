@@ -70,7 +70,6 @@ class Products(models.Model):
                                  verbose_name="Категория")
     image = models.ImageField(upload_to=encrypt,
                               null=True, blank=True, max_length=255, verbose_name="Изображение")
-    print(encrypt)
 
     class Meta:
         verbose_name = 'Товар'

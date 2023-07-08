@@ -241,6 +241,47 @@
     display: none;
 }
 
+#contact_us {
+    border-radius: var(--header-radius);
+    padding: 10px;
+}
+
+#contact_us .short-info h1 {
+    margin: 10px;
+}
+
+.map iframe {
+    border-radius: var(--header-radius);
+    width: 400px;
+    margin: 10px;
+}
+
+.data {
+    display: flex;
+}
+
+.data .text {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.data .text p{
+    font-size: 19px;
+    margin: 0;
+}
+.data .text #phone, #request{
+    font-weight: 700;
+}
+
+.data .text form {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+}
+
 @media (max-width:990px) {
     #welcome-block, #about_us, #our_customers, #our_partners{
         width: 100%;

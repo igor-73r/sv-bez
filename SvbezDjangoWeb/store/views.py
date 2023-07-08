@@ -1,13 +1,35 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 from .models import Products, ProductsPropertiesValues, ProductsCategories, Brands, OurCustomers
 from .filters import filtered_products, extended_filter_products
-from .forms import CategoryFilterForm
+from .forms import CategoryFilterForm, FeedbackForm
+from django.core import mail
 
 
 def home_page(request):
     partners = Brands.objects.all().filter(is_partner=True)
     customers = OurCustomers.objects.all()
+    if request.method == 'POST':
+        feedback_form = FeedbackForm(request.POST)
+        if feedback_form.is_valid():
+            send_email('Простое обращение',
+                       f"Имя: {feedback_form.cleaned_data['username']}\n"
+                       f"Тел: {feedback_form.cleaned_data['phone_number']}\n"
+                       f"Почта: {feedback_form.cleaned_data['email']}\n",
+                       feedback_form.cleaned_data['email'])
+    else:
+        feedback_form = FeedbackForm()
     return render(request, "home.html", locals())
+
+
+def send_email(subject, body, from_email):
+    with mail.get_connection() as connection:
+        mail.EmailMessage(
+            subject,
+            body,
+            from_email,
+            ['igorman.2016@gmail.com'],
+            connection=connection,
+        ).send()
 
 
 def price_field_validation(request):
