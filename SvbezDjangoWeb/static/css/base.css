@@ -190,7 +190,7 @@ footer nav ul li {
     border-radius: var(--text-radius);
 }
 
-@media (max-width: 766px) {
+@media (max-width: 990px) {
     .wrapper {
         padding: 0 10px 100px 10px !important;
     }

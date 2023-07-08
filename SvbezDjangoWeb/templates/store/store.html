@@ -37,43 +37,48 @@
     </div>
 </section>
 
-<section class="left-side-bar">
-{#    <div class="headline" id="category_head">#}
-{#        Фильтр#}
-{#    </div>#}
-    {% if form %}
-    <form method="GET">
-    {% for f in form %}
-            {% if f.name == 'price_min' %}
-                <div class="item">
-                    <div class="label" id="price">
-                        Цена:
-                    </div>
-                    <div class="price-field">
-                        {{ form.price_min }} {{ form.price_max }}
-                    </div>
-                </div>
-            {% elif f.name == 'price_max' %}
-            {% else %}
-                <div class="item">
-                    <div class="label">
-                        {{ f.label_tag }}
-                    </div>
-                    <div class="drop-down-data">
-                        {{ f }}
-                    </div>
-                </div>
-            {% endif %}
-        {% endfor %}
-    {% endif %}
-    <div class="buttons">
-        <input class="my-button" type="submit" value="Применить">
-        <input class="my-button" id="dismiss" type="submit" name="dismiss" value="Сбросить">
+<div>
+    <div class="filters">
+        <span class="material-symbols-rounded">filter_list</span>
     </div>
-    </form>
-</section>
+    <section class="left-side-bar">
+    {#    <div class="headline" id="category_head">#}
+    {#        Фильтр#}
+    {#    </div>#}
 
-<section class="cards">
+        {% if form %}
+        <form method="GET">
+        {% for f in form %}
+                {% if f.name == 'price_min' %}
+                    <div class="item">
+                        <div class="label" id="price">
+                            Цена:
+                        </div>
+                        <div class="price-field">
+                            {{ form.price_min }} {{ form.price_max }}
+                        </div>
+                    </div>
+                {% elif f.name == 'price_max' %}
+                {% else %}
+                    <div class="item">
+                        <div class="label">
+                            {{ f.label_tag }}
+                        </div>
+                        <div class="drop-down-data">
+                            {{ f }}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <div class="buttons">
+            <input class="my-button" type="submit" value="Применить">
+            <input class="my-button" id="dismiss" type="submit" name="dismiss" value="Сбросить">
+        </div>
+        </form>
+    </section>
+
+    <section class="cards">
 {% if products %}
     {% for product in products %}
         {% if product.is_published %}
@@ -107,5 +112,5 @@
     <div>Нет совпадений</div>
 {% endif %}
 </section>
-
+</div>
 {% endblock %}

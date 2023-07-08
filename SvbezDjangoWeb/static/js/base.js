@@ -65,6 +65,15 @@ $('.label').click(function(){
     }
 });
 
+$('.filters').click(function(){
+    let element = $(this).siblings('.left-side-bar')
+    if(element.is(":hidden")){
+        element.show();
+    }else{
+        element.removeAttr( 'style' );
+    }
+});
+
 function clearMyCookie(){
     let cookies = $.cookie()
     for (let cookie in cookies){
