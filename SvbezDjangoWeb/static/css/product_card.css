@@ -10,6 +10,7 @@ section.cards {
 section.cards .card {
     background: var(--clr2);
     width: calc(33.6% - 10px);
+    height: 595px;
     margin-bottom: 10px;
     /*margin: 5px;*/
     border-radius: var(--border-radius);
@@ -38,30 +39,30 @@ section.cards .card img {
     /*margin: 50px;*/
 }
 
-@media (max-width: 690px) {
-    section.cards .card {
-        width: 100%;
-        display: flex;
-        margin: 10px 0 0 0 !important;
-        padding: 0;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-    section.cards .card img {
-        width: 30%;
-        height: auto;
-        border-radius: var(--border-radius) var(--border-radius) 0px 0px;
-    }
-    section.cards .card .content {
-        width: 100%;
-        padding: 10px;
-    }
-    /*.image{*/
-    /*    width: 100%;*/
-    /*    height: auto;*/
-    /*}*/
-}
+/*@media (max-width: 690px) {*/
+/*    section.cards .card {*/
+/*        width: 100%;*/
+/*        display: flex;*/
+/*        margin: 10px 0 0 0 !important;*/
+/*        padding: 0;*/
+/*        flex-direction: row;*/
+/*        align-items: center;*/
+/*        justify-content: space-between;*/
+/*    }*/
+/*    section.cards .card img {*/
+/*        width: 30%;*/
+/*        height: auto;*/
+/*        border-radius: var(--border-radius) var(--border-radius) 0px 0px;*/
+/*    }*/
+/*    section.cards .card .content {*/
+/*        width: 100%;*/
+/*        padding: 10px;*/
+/*    }*/
+/*    !*.image{*!*/
+/*    !*    width: 100%;*!*/
+/*    !*    height: auto;*!*/
+/*    !*}*!*/
+/*}*/
 
 section.categories {
     background: none;
@@ -228,4 +229,40 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
     padding: 10px;
+}
+
+.filters {
+    display: none;
+}
+
+.left-side-bar{margin-top: 50px; display: block}
+
+@media (max-width: 990px), (max-width: 1500px){
+    .left-side-bar {
+        position: absolute;
+        display: none;
+        z-index: 9999;
+        margin-bottom: 0;
+        width: calc(33.6% - 10px);
+        min-height: 595px;
+        margin-top: 20px;
+    }
+
+    .filters {
+        margin-top: 20px;
+        display: block;
+        cursor: pointer;
+        background: white;
+        border-radius: var(--border-radius);
+        width: 48px;
+        height: 48px;
+    }
+
+    section.cards {
+        margin-top: 20px;
+    }
+
+    .left-side-bar .my-button {
+        width: 50%;
+    }
 }
