@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from .db_handler import encrypt
 
 
 class ProductsProperties(models.Model):
@@ -29,7 +30,7 @@ class ProductsCategories(models.Model):
 
 class Brands(models.Model):
     brand = models.CharField(max_length=255, unique=True)
-    brand_logo = models.ImageField(upload_to='photos/brands-logos/',
+    brand_logo = models.ImageField(upload_to=encrypt,
                                    null=True, blank=True, max_length=255, verbose_name="Логотип")
     is_partner = models.BooleanField("Партнер", default=False)
 
@@ -67,8 +68,9 @@ class Products(models.Model):
                                  on_delete=models.SET_NULL,
                                  null=True,
                                  verbose_name="Категория")
-    image = models.ImageField(upload_to='photos/products/',
+    image = models.ImageField(upload_to=encrypt,
                               null=True, blank=True, max_length=255, verbose_name="Изображение")
+    print(encrypt)
 
     class Meta:
         verbose_name = 'Товар'
@@ -103,7 +105,7 @@ class ProductsPropertiesValues(models.Model):
 
 class OurCustomers(models.Model):
     company_name = models.CharField("Название компании", max_length=255)
-    company_logo = models.ImageField(upload_to='photos/customers_companies/',
+    company_logo = models.ImageField(upload_to=encrypt,
                                      null=True, blank=True, max_length=255, verbose_name="Логотип компании")
     company_description = models.TextField("Описание")
 

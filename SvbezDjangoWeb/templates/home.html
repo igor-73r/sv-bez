@@ -92,12 +92,16 @@ cовременные системы видеонаблюдения:
         <div class="customer-cards">
             {% for i in customers %}
                 <div class="customer-card">
-                    <div class="descr">{{ i.company_description }}</div>
-                    {% if i.company_logo %}
-                        <img id="logo" src="{{ i.company_logo.url }}" alt="">
-{#                    {% else %}#}
-                    {% endif %}
-                    <p id="company_name">{{ i.company_name }}</p>
+                    <div class="inner">
+                        <div class="descr">{{ i.company_description }}</div>
+                        <div class="front">
+                            {% if i.company_logo %}
+                                <img id="logo" src="{{ i.company_logo.url }}" alt="">
+                            {% else %}
+                            {% endif %}
+                            <p id="company_name">{{ i.company_name }}</p>
+                        </div>
+                    </div>
                 </div>
             {% endfor %}
         </div>

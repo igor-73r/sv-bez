@@ -33,6 +33,7 @@ section.cards .card img {
 
 .text{
     white-space: pre-wrap;
+    background: var(--clr3);
     /*font-size: 20px;*/
     /*margin: 50px;*/
 }
@@ -82,7 +83,7 @@ section.categories {
 section.categories .category_block {
     position: relative;
     /*height: calc();*/
-    background: var(--clr1);
+    background: var(--clr3);
     border-radius: var(--border-radius);
     padding: 10px;
     margin: 10px;
@@ -173,7 +174,7 @@ input[type="checkbox"] {
 .item {
     margin: 10px 5px;
     padding: 7px;
-    background-color: var(--clr1);
+    background-color: var(--clr3);
     border-radius: var(--border-radius);
 }
 
