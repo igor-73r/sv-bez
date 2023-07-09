@@ -1,4 +1,5 @@
 $(document).ready(function($) {
+    PopUpHide();
     const header = $('.header')
     let prevScroll = $(window).scrollTop()
     let currentScroll
@@ -17,7 +18,7 @@ $(document).ready(function($) {
     $(window).on('scroll', function() {
 
         //ADD .TIGHT
-        let expression = $(window).scrollTop() + $(window).height() > $('.wrapper').outerHeight()
+        let expression = $(window).scrollTop() + $(window).height() > $('.wrapper').outerHeight() && $(window).width() > 990
         if (expression) {
             $('body').addClass('tight');
             $('.arrow').hide();
@@ -46,6 +47,22 @@ $(document).ready(function($) {
     });
 
 });
+
+
+function PopUpShow(preordered_value=null){
+    if(preordered_value != null){
+        let pattern = `Добрый день! Хотелось бы приобрести товар "${preordered_value}"`
+        $(".pop-up textarea").val(pattern)
+        $(".pop-up").show();
+    }
+    else
+        $(".pop-up").show();
+}
+
+function PopUpHide(){
+    $(".pop-up").hide();
+}
+
 
 $('.arrow').click(function(){
     $("html").animate({ scrollTop: $('html').prop("scrollHeight")}, 1200);

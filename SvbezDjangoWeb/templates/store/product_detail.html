@@ -3,6 +3,12 @@
 {% block extra_links %}
     <link rel="stylesheet" href="{% static "css/product_detail.css" %}">
 {% endblock %}
+{% block title %}
+    <title>{{product.brand}} {{product.model}}</title>
+{% endblock %}
+{% block description %}
+    <meta name="description" content="{{product.brand}} {{product.model}} {{ product.description }}"/>
+{% endblock %}
 {% block content %}
     <div class="main-card">
         <div class="main-block">
@@ -14,13 +20,18 @@
                     <div class="brand"><p>{{product.brand}}</p></div>
                     <div class="model"><p>{{product.model}}</p></div>
                 </div>
-                <div class="price">
-                    {% if product.sale %}
-                        <p class="new-price">{{ product.sale }} ₽</p>
-                        <s class="old-price">{{ product.price }} ₽</s>
-                    {%  else %}
-                        <p>{{ product.price }} ₽</p>
-                    {% endif %}
+                <div class="bottom-data">
+                    <div>
+                        <a href="javascript:PopUpShow('{{product.brand}} {{product.model}}')">Заказать</a>
+                    </div>
+                    <div class="price">
+                        {% if product.sale %}
+                            <p class="new-price">{{ product.sale }} ₽</p>
+                            <s class="old-price">{{ product.price }} ₽</s>
+                        {%  else %}
+                            <p>{{ product.price }} ₽</p>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>

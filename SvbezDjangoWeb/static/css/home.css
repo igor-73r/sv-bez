@@ -241,6 +241,59 @@
     display: none;
 }
 
+#contact_us {
+    border-radius: var(--header-radius);
+    padding: 20px;
+}
+
+#contact_us .short-info h1 {
+    margin: 10px;
+}
+
+.map iframe {
+    border-radius: var(--header-radius);
+    width: 450px;
+    height: calc(100% - 35px);
+    margin: 10px;
+    border-width: 0;
+}
+
+.data {
+    display: flex;
+}
+
+.data .text {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.data .text p{
+    font-size: 19px;
+    margin: 0;
+}
+.data .text #phone, #request{
+    font-weight: 700;
+}
+
+.data .text form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: var(--clr3);
+    border-radius: var(--border-radius);
+}
+
+.data .text form input{
+    background: white;
+}
+.data .text form input[type='submit']{
+    background: var(--clr4);
+    cursor: pointer;
+}
+
 @media (max-width:990px) {
     #welcome-block, #about_us, #our_customers, #our_partners{
         width: 100%;
