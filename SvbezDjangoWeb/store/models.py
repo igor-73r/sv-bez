@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from .db_handler import encrypt
+from .tools import encrypt
 
 
 class ProductsProperties(models.Model):

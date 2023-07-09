@@ -1,5 +1,6 @@
 import uuid
 import os
+from django.core import mail
 
 
 def encrypt(instance, filename):
@@ -14,3 +15,14 @@ def encrypt(instance, filename):
     ext = filename.split('.')[-1]
     filename = "%s.%s" % (uuid.uuid4(), ext)
     return os.path.join(folder, filename)
+
+
+def send_email(subject, body):
+    with mail.get_connection() as connection:
+        mail.EmailMessage(
+            subject,
+            body,
+            "*",
+            ['igorman.2016@gmail.com'],
+            connection=connection,
+        ).send()

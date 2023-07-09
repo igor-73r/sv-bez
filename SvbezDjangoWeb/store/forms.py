@@ -9,6 +9,10 @@ class FeedbackForm(forms.Form):
     email = forms.EmailField(required=True, label="Email")
 
 
+class ExtendedFeedbackForm(FeedbackForm):
+    content = forms.CharField(widget=forms.TextInput, required=False)
+
+
 class CategoryFilterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(CategoryFilterForm, self).__init__(*args)

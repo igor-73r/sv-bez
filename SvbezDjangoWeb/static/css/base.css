@@ -284,3 +284,17 @@ body.tight .wrapper {
     -webkit-animation: bounce 2s infinite;
     animation: bounce 2s infinite;
 }
+
+.pop-up {
+    width:100%;
+    min-height:100%;
+    position: fixed;
+    z-index: 9999;
+    background-color: rgba(0,0,0,0.5);
+    overflow:hidden;
+    /*top:0;*/
+}
+
+#contact-form-pop-up {
+    background: white;
+}
