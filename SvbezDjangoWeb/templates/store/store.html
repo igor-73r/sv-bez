@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-<title>Магазин</title>
+    <title>Магазин</title>
+{% endblock %}
+
+{% block description %}
+    <meta name="description" content="Камеры видеонаблюдения, домофония, видеорегистраторы, турникеты, металлодетекторы"/>
 {% endblock %}
 
 {% block extra_links %}
@@ -9,12 +13,6 @@
 {% endblock %}
 
 {% block content %}
-{#{% if form %}#}
-{#    <section class="form">#}
-{#        {{ form }}#}
-{#    </section>#}
-{#{% endif %}#}
-
 <section class="categories">
     <div class="headline" id="category_head">
         Категории

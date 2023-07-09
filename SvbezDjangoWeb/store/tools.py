@@ -1,6 +1,7 @@
 import uuid
 import os
 from django.core import mail
+from .config import EMAIL_USER
 
 
 def encrypt(instance, filename):
@@ -23,6 +24,6 @@ def send_email(subject, body):
             subject,
             body,
             "*",
-            ['igorman.2016@gmail.com'],
+            [EMAIL_USER],
             connection=connection,
         ).send()
