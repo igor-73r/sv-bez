@@ -292,9 +292,47 @@ body.tight .wrapper {
     z-index: 9999;
     background-color: rgba(0,0,0,0.5);
     overflow:hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     /*top:0;*/
 }
 
 #contact-form-pop-up {
     background: white;
+    max-width: 50%;
+    border-radius: var(--header-radius);
+}
+
+#contact-form-pop-up form {
+    display: flex;
+    flex-direction: column;
+}
+
+/*form {*/
+/*    background: var(--clr3);*/
+/*    border-radius: var(--header-radius);*/
+/*    padding: 20px;*/
+/*}*/
+
+form input, form textarea {
+    padding: 10px;
+    resize: none;
+    background: var(--clr3);
+    border-radius: var(--border-radius);
+    font-weight: 600;
+    border-width: 0;
+    margin-bottom: 10px;
+}
+
+form input[type='submit'] {
+    padding: 10px;
+    max-width: min-content;
+    margin-top: 10px;
+    background: var(--clr4);
+    border-radius: var(--border-radius);
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    border-width: 0;
 }

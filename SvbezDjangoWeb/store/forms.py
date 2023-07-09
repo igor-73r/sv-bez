@@ -10,7 +10,7 @@ class FeedbackForm(forms.Form):
 
 
 class ExtendedFeedbackForm(FeedbackForm):
-    content = forms.CharField(widget=forms.TextInput, required=False)
+    content = forms.CharField(widget=forms.Textarea, required=False, label="Сообщение")
 
 
 class CategoryFilterForm(forms.Form):
