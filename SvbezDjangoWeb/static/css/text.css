@@ -25,7 +25,7 @@ a:hover{
     /*margin: 10px auto;*/
     max-width: 90%;
     height: auto;
-    background: var(--clr1);
+    background: var(--clr3);
     border-radius: var(--border-radius);
 }
 

@@ -4,9 +4,9 @@ from django.db.models import Max, Min
 
 
 class FeedbackForm(forms.Form):
-    username = forms.CharField(max_length=255, label="Как к вам обращаться?", required=True)
+    username = forms.CharField(max_length=255, label="Ваше имя", required=True)
     phone_number = forms.CharField(max_length=11, required=True, label="Номер телефона")
-    email = forms.EmailField(required=True, label="Email")
+    email = forms.EmailField(required=False, label="Email")
 
 
 class ExtendedFeedbackForm(FeedbackForm):

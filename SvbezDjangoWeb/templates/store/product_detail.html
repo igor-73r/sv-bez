@@ -20,13 +20,18 @@
                     <div class="brand"><p>{{product.brand}}</p></div>
                     <div class="model"><p>{{product.model}}</p></div>
                 </div>
-                <div class="price">
-                    {% if product.sale %}
-                        <p class="new-price">{{ product.sale }} ₽</p>
-                        <s class="old-price">{{ product.price }} ₽</s>
-                    {%  else %}
-                        <p>{{ product.price }} ₽</p>
-                    {% endif %}
+                <div class="bottom-data">
+                    <div>
+                        <a href="javascript:PopUpShow('{{product.brand}} {{product.model}}')">Заказать</a>
+                    </div>
+                    <div class="price">
+                        {% if product.sale %}
+                            <p class="new-price">{{ product.sale }} ₽</p>
+                            <s class="old-price">{{ product.price }} ₽</s>
+                        {%  else %}
+                            <p>{{ product.price }} ₽</p>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
