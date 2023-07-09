@@ -300,8 +300,15 @@ body.tight .wrapper {
 
 #contact-form-pop-up {
     background: white;
-    max-width: 50%;
+    max-width: 35%;
     border-radius: var(--header-radius);
+    padding-bottom: 50px;
+}
+
+#contact-form-pop-up span{
+    position: absolute;
+    font-size: 30px;
+    top: 50px;
 }
 
 #contact-form-pop-up form {
@@ -309,18 +316,19 @@ body.tight .wrapper {
     flex-direction: column;
 }
 
-/*form {*/
-/*    background: var(--clr3);*/
-/*    border-radius: var(--header-radius);*/
-/*    padding: 20px;*/
-/*}*/
+#contact-form-pop-up form input{
+    font-size: 17px;
+}
+
 
 form input, form textarea {
     padding: 10px;
     resize: none;
     background: var(--clr3);
     border-radius: var(--border-radius);
-    font-weight: 600;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
     border-width: 0;
     margin-bottom: 10px;
 }

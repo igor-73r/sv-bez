@@ -34,18 +34,18 @@
 
 <body>
 
-<a href="javascript:PopUpShow()">Show popup</a>
-<a href="javascript:PopUpHide()">Hide popup</a>
+{#<a href="javascript:PopUpShow()">Show popup</a>#}
+{#<a href="javascript:PopUpHide()">Hide popup</a>#}
 
 
 <div class="pop-up">
     <section id="contact-form-pop-up">
+        <a href="javascript:PopUpHide()"><span class="material-symbols-rounded">close</span></a>
         <form method="POST" >
             {% csrf_token %}
             {{ ext_feedback_form }}
             <input type="submit" value="Отправить">
         </form>
-
     </section>
 </div>
 

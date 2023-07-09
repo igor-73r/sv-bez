@@ -255,6 +255,7 @@
     width: 450px;
     height: calc(100% - 35px);
     margin: 10px;
+    border-width: 0;
 }
 
 .data {

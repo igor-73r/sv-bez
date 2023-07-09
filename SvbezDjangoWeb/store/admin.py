@@ -36,6 +36,7 @@ class ProductsPropertiesValuesAdmin(admin.TabularInline):  # DynamicModelAdminMi
 
 @admin.register(Products)
 class ProductsAdmin(admin.ModelAdmin):
+    search_fields = ('model',)
     list_display = ('brand', 'model', 'price', 'category', 'is_published')
     prepopulated_fields = {"slug": ("brand", "model")}
     autocomplete_fields = ('brand', 'category')

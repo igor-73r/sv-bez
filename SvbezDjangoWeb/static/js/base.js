@@ -49,10 +49,16 @@ $(document).ready(function($) {
 });
 
 
-function PopUpShow(){
-    $(".pop-up").show();
+function PopUpShow(preordered_value=null){
+    if(preordered_value != null){
+        let pattern = `Добрый день! Хотелось бы приобрести товар "${preordered_value}"`
+        $(".pop-up textarea").val(pattern)
+        $(".pop-up").show();
+    }
+    else
+        $(".pop-up").show();
 }
-//Функция скрытия PopUp
+
 function PopUpHide(){
     $(".pop-up").hide();
 }

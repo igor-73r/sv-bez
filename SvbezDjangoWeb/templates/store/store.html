@@ -79,38 +79,43 @@
     </section>
 
     <section class="cards">
-{% if products %}
-    {% for product in products %}
-        {% if product.is_published %}
-            <div class="card">
-                <div class="product-image">
-                    {% if product.image %}
-                        <img src="{{ product.image.url }}">
-                    {% endif %}
-                </div>
-                <div class="content">
-                    <div class="headline">
-                        <a href="{% url 'product_detail' product.slug %}">{{product.brand}} {{product.model}}</a>
+        {% if products %}
+            {% for product in products %}
+                {% if product.is_published %}
+                    <div class="card">
+                        <div class="product-image">
+                            {% if product.image %}
+                                <img src="{{ product.image.url }}">
+                            {% endif %}
+                        </div>
+                        <div class="content">
+                            <div class="headline">
+                                <a href="{% url 'product_detail' product.slug %}">{{product.brand}} {{product.model}}</a>
+                            </div>
+                            <div class="text">
+                                <p>{{ product.description | truncatewords:15 }}</p>
+                            </div>
+                            <div class="bottom-data">
+                                <div>
+                                    <a href="javascript:PopUpShow('{{product.brand}} {{product.model}}')">Заказать</a>
+                                </div>
+                                <div class="price">
+                                    {% if product.sale %}
+                                        <p class="new-price">{{ product.sale }} ₽</p>
+                                        <s class="old-price">{{ product.price }} ₽</s>
+                                    {%  else %}
+                                        <p>{{ product.price }} ₽</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                <!--            <div class="button"></div>-->
+                        </div>
                     </div>
-                    <div class="text">
-                        <p>{{ product.description | truncatewords:15 }}</p>
-                    </div>
-                    <div class="price">
-                        {% if product.sale %}
-                            <p class="new-price">{{ product.sale }} ₽</p>
-                            <s class="old-price">{{ product.price }} ₽</s>
-                        {%  else %}
-                            <p>{{ product.price }} ₽</p>
-                        {% endif %}
-                    </div>
-        <!--            <div class="button"></div>-->
-                </div>
-            </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <div>Нет совпадений</div>
         {% endif %}
-    {% endfor %}
-{% else %}
-    <div>Нет совпадений</div>
-{% endif %}
 </section>
 </div>
 {% endblock %}
