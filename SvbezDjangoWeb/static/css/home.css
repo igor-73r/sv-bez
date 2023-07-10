@@ -60,7 +60,7 @@
 .welcome-buttons #button {
     background: white;
     color: #000;
-    font-size: 30px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 400;
     line-height: 0;
@@ -79,13 +79,13 @@
 }
 
 .short-info h1 {
-    font-size: 50px;
+    font-size: 44px;
     font-weight: 700;
     margin-bottom: 10px;
 }
 
 .short-info p {
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 400;
     line-height: 40px;
     white-space: pre-wrap;
@@ -94,6 +94,7 @@
 
 .about-item {
     display: flex;
+    justify-content: space-between;
     background: var(--clr3);
     border-radius: var(--header-radius);
     padding: 30px;
@@ -108,11 +109,11 @@
 }
 
 .about-item#second, .about-item#first {
-    max-width: 820px;
+    max-width: 840px;
 }
 
 .about-item#third{
-    max-width: 880px;
+    max-width: 1000px;
 }
 
 .about-item img{
@@ -125,14 +126,16 @@
 }
 
 #first img, #second img {
-    margin: 0;
+    /*margin: 0;*/
     width: 275px;
     height: 184px;
+    margin: 10px;
 }
 
 #third img {
     width: 323px;
     height: 216px;
+    margin: 10px;
 }
 
 .text {
@@ -140,7 +143,7 @@
     background: var(--clr2);
     border-radius: var(--header-radius);
     padding: 30px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
     line-height: 31px;
     height: 100%;
