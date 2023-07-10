@@ -260,7 +260,8 @@ body.tight .wrapper {
 
 #contact-form-pop-up span{
     position: absolute;
-    font-size: 30px;
+    right: 50px;
+    font-size: 40px;
     top: 50px;
 }
 
@@ -335,6 +336,9 @@ footer .main-content a:hover{
 }
 
 @media (max-width: 990px) {
+    #contact-form-pop-up {
+        max-width: 60%;
+    }
     .our-links svg {
         font-size: 14px;
         width: auto;
@@ -351,4 +355,5 @@ footer .main-content a:hover{
         font-size: 14px;
         width: auto;
     }
+
 }

@@ -222,7 +222,9 @@ input[type="checkbox"] {
     background: var(--clr4);
     border-radius: var(--border-radius);
     color: white;
-    padding: 5px 10px;
+    line-height: 0;
+    font-weight: 700;
+    padding: 7px 10px;
 }
 
 @media (max-width: 990px), (max-width: 1500px){
