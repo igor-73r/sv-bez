@@ -1,5 +1,5 @@
 $(document).ready(function($) {
-    PopUpHide();
+    // PopUpHide();
     const header = $('.header')
     let prevScroll = $(window).scrollTop()
     let currentScroll
@@ -53,10 +53,10 @@ function PopUpShow(preordered_value=null){
     if(preordered_value != null){
         let pattern = `Добрый день! Хотелось бы приобрести товар "${preordered_value}"`
         $(".pop-up textarea").val(pattern)
-        $(".pop-up").show();
+        $(".pop-up").css('display', 'flex');
     }
     else
-        $(".pop-up").show();
+        $(".pop-up").css('display', 'flex');
 }
 
 function PopUpHide(){

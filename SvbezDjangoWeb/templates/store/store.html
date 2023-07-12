@@ -46,33 +46,35 @@
 
         {% if form %}
         <form method="GET">
-        {% for f in form %}
-                {% if f.name == 'price_min' %}
-                    <div class="item">
-                        <div class="label" id="price">
-                            Цена:
-                        </div>
-                        <div class="price-field">
-                            {{ form.price_min }} {{ form.price_max }}
-                        </div>
-                    </div>
-                {% elif f.name == 'price_max' %}
-                {% else %}
-                    <div class="item">
-                        <div class="label">
-                            {{ f.label_tag }}
-                        </div>
-                        <div class="drop-down-data">
-                            {{ f }}
-                        </div>
-                    </div>
+            <div class="scroll-data">
+                {% for f in form %}
+                        {% if f.name == 'price_min' %}
+                            <div class="item">
+                                <div class="label" id="price">
+                                    Цена:
+                                </div>
+                                <div class="price-field">
+                                    {{ form.price_min }} {{ form.price_max }}
+                                </div>
+                            </div>
+                        {% elif f.name == 'price_max' %}
+                        {% else %}
+                            <div class="item">
+                                <div class="label">
+                                    {{ f.label_tag }}
+                                </div>
+                                <div class="drop-down-data">
+                                    {{ f }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 {% endif %}
-            {% endfor %}
-        {% endif %}
-        <div class="buttons">
-            <input class="my-button" type="submit" value="Применить">
-            <input class="my-button" id="dismiss" type="submit" name="dismiss" value="Сбросить">
-        </div>
+            </div>
+            <div class="buttons">
+                <input class="my-button" type="submit" value="Применить">
+                <input class="my-button" id="dismiss" type="submit" name="dismiss" value="Сбросить">
+            </div>
         </form>
     </section>
 

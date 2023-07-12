@@ -233,22 +233,20 @@ body.tight .wrapper {
 .footer {
     width: 90%;
     max-width: 1440px;
-    margin: 0px auto;
+    margin: 0 auto 50px auto;
     text-align: center;
-    margin-bottom: 50px;
 }
 
 .pop-up {
+    display: none;
     width:100%;
     min-height:100%;
     position: fixed;
     z-index: 9999;
     background-color: rgba(0,0,0,0.5);
     overflow:hidden;
-    display: flex;
     align-items: center;
     justify-content: center;
-    /*top:0;*/
 }
 
 #contact-form-pop-up {
