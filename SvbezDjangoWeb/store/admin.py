@@ -15,22 +15,28 @@ class ProductsCategoriesAdmin(admin.ModelAdmin):
     inlines = [ProductsCategoriesPropAdmin]
 
 
-class ProductsPropertiesValuesAdmin(admin.TabularInline):  # DynamicModelAdminMixin
+class ProductsPropertiesValuesAdmin(admin.TabularInline):
     model = ProductsPropertiesValues
-    extra = 40
+    extra = 0
 
     def get_parent_object_from_request(self, request):
+        """
+        Get object of parent table of inline block
+        """
         resolved = resolve(request.path_info)
         if resolved:
             return self.parent_model.objects.get(pk=resolved.kwargs.get('object_id'))
         return None
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        """
+        Creates a queryset with characteristics corresponding to the selected category
+        """
         products_category = self.get_parent_object_from_request(request).category
         if db_field.name == "property_name":
             product_cp = ProductsCategoriesProperties.objects.filter(category_name=products_category)
             kwargs["queryset"] = product_cp.order_by('property_priority')
-            print(kwargs['queryset'])
+            self.extra = len(kwargs['queryset'])
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
@@ -43,9 +49,11 @@ class ProductsAdmin(admin.ModelAdmin):
     inlines = [ProductsPropertiesValuesAdmin]
 
     def get_inline_instances(self, request, obj=None):
-        print(request, obj)
-        for i in self.inlines:
-            print(i)
+        """
+        Handles an exception in which,
+        if the products do not have a category,
+        the inline block cannot be displayed
+        """
         if not obj:
             return []
         else:
