@@ -1,0 +1,9 @@
+/SvbezDjangoWeb/db.sqlite3
+/SvbezDjangoWeb/SvbezDjangoWeb/config.py
+/SvbezDjangoWeb/store/config.py
+/venv/
+/SvbezDjangoWeb/media/
+/SvbezDjangoWeb/templates/example.html
+/SvbezDjangoWeb/store/migrations/
+.idea
+__pycache__
