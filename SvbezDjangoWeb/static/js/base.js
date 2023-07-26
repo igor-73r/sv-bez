@@ -104,4 +104,13 @@ $('#dismiss').click(clearMyCookie);
 
 $('.category_block').click(clearMyCookie);
 
+// $('.extra img').on('mouseover', function(){
+//     // console.log($(this).attr('src'));
+//     // console.log($('.product-image img').attr('src'))
+//     $('.product-image img').attr('src', $(this).attr('src'));
+// });
+
+$('.extra img').click(function(){
+    $('.product-image img').attr('src', $(this).attr('src'));
+});
 

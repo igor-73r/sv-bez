@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from .tools import encrypt
+from django.utils.safestring import mark_safe
 
 
 class ProductsProperties(models.Model):
@@ -114,3 +115,22 @@ class OurCustomers(models.Model):
 
     def __str__(self):
         return self.company_name
+
+
+class ProductsExtraPhotos(models.Model):
+    product_id = models.ForeignKey(Products, on_delete=models.CASCADE, verbose_name="ID Товара")
+    extra_photo = models.ImageField(upload_to=encrypt, null=True, blank=True, max_length=255,
+                                    verbose_name="Дополнительное фото")
+
+    class Meta:
+        verbose_name = 'Дополнительная фотография'
+        verbose_name_plural = 'Дополнительные фотографии'
+
+    # def __str__(self):
+    #     return self.extra_photo
+
+    def image_tag(self):
+        if self.extra_photo.url is not None:
+            return mark_safe('<img src="{}" height="50"/>'.format(self.extra_photo.url))
+        else:
+            return ""

@@ -40,13 +40,19 @@ class ProductsPropertiesValuesAdmin(admin.TabularInline):
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
+class ExtraPhotosAdmin(admin.TabularInline):
+    model = ProductsExtraPhotos
+    readonly_fields = ('id', 'image_tag',)
+    extra = 1
+
+
 @admin.register(Products)
 class ProductsAdmin(admin.ModelAdmin):
     search_fields = ('model',)
-    list_display = ('brand', 'model', 'price', 'category', 'is_published')
+    list_display = ('brand', 'model', 'price', 'category', 'is_published', )
     prepopulated_fields = {"slug": ("brand", "model")}
     autocomplete_fields = ('brand', 'category')
-    inlines = [ProductsPropertiesValuesAdmin]
+    inlines = [ExtraPhotosAdmin, ProductsPropertiesValuesAdmin]
 
     def get_inline_instances(self, request, obj=None):
         """

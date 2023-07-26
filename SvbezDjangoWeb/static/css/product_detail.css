@@ -70,9 +70,11 @@ td {
 
 .product-image img {
     max-width: 400px;
+    border-radius: var(--border-radius);
 }
 .product-image{
     display: flex;
+    height: 400px;
     align-items: center;
 }
 
@@ -99,4 +101,27 @@ td {
     font-weight: 700;
     padding: 9px 12px;
     margin-right: 20px;
+}
+
+.extra {
+    display: flex;
+    border-radius: var(--border-radius);
+    background-color: var(--clr3);
+    width: fit-content;
+    padding: 5px;
+}
+
+.extra img{
+    width: auto;
+    height: 70px;
+    margin: 5px;
+    /* border: solid;
+    border-width: 1px;
+    border-color: var(--clr1); */
+    border-radius: var(--border-radius);
+    background-color: var(--clr2);
+}
+
+.extra img:hover{
+    transform: scale(105%);
 }

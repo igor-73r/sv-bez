@@ -255,7 +255,7 @@
 }
 
 .map iframe {
-    border-radius: var(--header-radius);
+    border-radius: var(--border-radius);
     /*width: 450px;*/
     width: 100%;
     height: calc(100% - 35px);

@@ -17,6 +17,8 @@ def encrypt(instance, filename):
             folder = 'photos/products/'
         case 'store_ourcustomers':
             folder = 'photos/customers_companies/'
+        case 'store_productsextraphotos':
+            folder = 'photos/products/extra/'
     ext = filename.split('.')[-1]
     filename = "%s.%s" % (uuid.uuid4(), ext)
     return os.path.join(folder, filename)

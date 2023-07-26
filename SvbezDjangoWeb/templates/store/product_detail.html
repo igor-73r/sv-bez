@@ -12,8 +12,19 @@
 {% block content %}
     <div class="main-card">
         <div class="main-block">
-            <div class="product-image">
-                <img src="{{ product.image.url }}" alt="">
+            <div class="images-block">
+                <div class="product-image">
+                    <img src="{{ product.image.url }}" alt="">
+                </div>
+                <div class="extra">
+                    {% if extra_images %}
+                        <img src="{{ product.image.url }}" alt="">
+                        {% for image in extra_images %}
+                            <img src="{{ image.extra_photo.url }}" alt="">
+                            <!-- <p>{{ image }}</p> -->
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
             <div class="content">
                 <div class="info">
