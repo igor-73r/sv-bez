@@ -19,6 +19,10 @@ section.cards .card {
     justify-content: flex-end;
 }
 
+section.cards .card:hover{
+    transform: scale(101%);
+}
+
 section.cards .card .content {
     display: flex;
     padding: 10px;

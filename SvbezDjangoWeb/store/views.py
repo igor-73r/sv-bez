@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Products, ProductsPropertiesValues, ProductsCategories, Brands, OurCustomers
+from .models import Products, ProductsPropertiesValues, ProductsCategories, Brands, OurCustomers, ProductsExtraPhotos
 from .filters import filtered_products, extended_filter_products
 from .forms import CategoryFilterForm, FeedbackForm, ExtendedFeedbackForm
-from .tools import send_email
+from .tools import send_email, price_field_validation
 
 
 def extended_form_handler(request, subject="Расширенное обращение"):
@@ -39,14 +39,6 @@ def home_page(request):
     return render(request, "home.html", locals())
 
 
-def price_field_validation(request):
-    props = request.GET.copy()
-    min_price, max_price = props.get('price_min'), props.get('price_max')
-    if max_price != '' and min_price != '' and int(max_price) < int(min_price):
-        props['price_min'], props['price_max'] = props['price_max'], props['price_min']
-    return props
-
-
 def base_store_view(request):
     categories = ProductsCategories.objects.all()
     ext_feedback_form = extended_form_handler(request, subject="Запрос на приобретение товара")
@@ -62,6 +54,7 @@ def base_store_view(request):
 
 def store_cat_view(request, category):
     categories = ProductsCategories.objects.all()
+    ext_feedback_form = extended_form_handler(request, subject="Запрос на приобретение товара")
     props = request.GET
     if 'dismiss' in props:
         return redirect('cat_store', category)
@@ -75,5 +68,9 @@ def store_cat_view(request, category):
 def product_view(request, slug):
     ext_feedback_form = extended_form_handler(request, subject="Запрос на приобретение товара")
     product = Products.objects.get(slug=slug)
+    extra_images = ProductsExtraPhotos.objects.filter(product_id=product.id)
+    print(extra_images)
+    for i in extra_images:
+        print(i)
     properties = ProductsPropertiesValues.objects.filter(product_id=product.id).order_by('property_name')
     return render(request, "store/product_detail.html", locals())

@@ -6,4 +6,8 @@
 /SvbezDjangoWeb/templates/example.html
 /SvbezDjangoWeb/store/migrations/
 .idea
+<<<<<<< HEAD
 __pycache__
+=======
+__pycache__
+>>>>>>> 84f4121f0afc6ba1ce6781c117ac31b58756efd5

@@ -12,8 +12,19 @@
 {% block content %}
     <div class="main-card">
         <div class="main-block">
-            <div class="product-image">
-                <img src="{{ product.image.url }}" alt="">
+            <div class="images-block">
+                <div class="product-image">
+                    <img src="{{ product.image.url }}" alt="">
+                </div>
+                <div class="extra">
+                    {% if extra_images %}
+                        <img src="{{ product.image.url }}" alt="">
+                        {% for image in extra_images %}
+                            <img src="{{ image.extra_photo.url }}" alt="">
+                            <!-- <p>{{ image }}</p> -->
+                        {% endfor %}
+                    {% endif %}
+                </div>
             </div>
             <div class="content">
                 <div class="info">
@@ -44,9 +55,9 @@
         <h2>Характеристики:</h2>
         <div class="props-block">
             <div class="text">
-            <table>
+            <table cellspacing="0" cellpadding="0">
                 {% for i in properties %}
-                    <tr>
+                    <tr class={% cycle 'odd' 'even' %}>
                         <td class="prop-name">{{ i.property_name }}: </td>
                         <td class="prop-value">{{ i.value }}</td>
                     </tr>

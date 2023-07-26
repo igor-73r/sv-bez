@@ -104,4 +104,20 @@ $('#dismiss').click(clearMyCookie);
 
 $('.category_block').click(clearMyCookie);
 
+// $('.extra img').on('mouseover', function(){
+//     // console.log($(this).attr('src'));
+//     // console.log($('.product-image img').attr('src'))
+//     $('.product-image img').attr('src', $(this).attr('src'));
+// });
+
+$('.extra img').click(function(){
+    $('.product-image img').attr('src', $(this).attr('src'));
+});
+
+$('section.cards .card').click(function(){
+    $('.product-image img').attr('src', $(this).attr('src'));
+    let href = this.querySelector('.content .headline a');
+    // console.log($(href).attr('href'));
+    window.location.href = $(href).attr('href');
+});
 
