@@ -55,9 +55,9 @@
         <h2>Характеристики:</h2>
         <div class="props-block">
             <div class="text">
-            <table>
+            <table cellspacing="0" cellpadding="0">
                 {% for i in properties %}
-                    <tr>
+                    <tr class={% cycle 'odd' 'even' %}>
                         <td class="prop-name">{{ i.property_name }}: </td>
                         <td class="prop-value">{{ i.value }}</td>
                     </tr>

@@ -5,7 +5,7 @@
     width: 100%;
     height: auto;
     margin-bottom: 10px;
-    border-radius: var(--border-radius);
+    border-radius: var(--header-radius);
 }
 
 .main-block{
@@ -43,7 +43,7 @@
 
 .text{
     white-space: pre-wrap;
-    font-size: 20px;
+    font-size: 17px;
     padding: 10px;
     margin: 0 50px;
 }
@@ -54,18 +54,23 @@
     flex-direction: column;
 }
 
-.props-block .text p{
-    margin-bottom: 10px;
-}
-
 h2 {margin-left: 50px; margin-top: 50px}
-
-.prop-value{
-    font-size: 15px;
-}
 
 td {
     width: 50%;
+    padding: 5px;
+}
+
+tr.even {
+    background-color: var(--clr2);
+}
+
+.prop-name{
+    border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.prop-value{
+    border-radius: 0 var(--border-radius) var(--border-radius) 0;
 }
 
 .product-image img {

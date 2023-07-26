@@ -97,10 +97,14 @@
     justify-content: space-between;
     background: var(--clr3);
     border-radius: var(--header-radius);
-    padding: 30px;
+    padding: 15px;
     margin: 30px 0;
     align-items: center;
     justify-content: space-between;
+}
+
+.about-item div{
+    margin: 15px;
 }
 
 .about-item#second{
@@ -109,11 +113,7 @@
 }
 
 .about-item#second, .about-item#first {
-    max-width: 840px;
-}
-
-.about-item#third{
-    max-width: 1000px;
+    max-width: 850px;
 }
 
 .about-item img{
@@ -126,16 +126,13 @@
 }
 
 #first img, #second img {
-    /*margin: 0;*/
     width: 275px;
     height: 184px;
-    margin: 10px;
 }
 
 #third img {
     width: 323px;
     height: 216px;
-    margin: 10px;
 }
 
 .text {
@@ -198,7 +195,12 @@
     padding: 0 50px 100px 50px;
 }
 
+.customer-cards{
+    display: flex;
+}
+
 .customer-card {
+    margin: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -211,8 +213,11 @@
 }
 
 .customer-card img {
-    width: 300px;
+    width: auto;
+    max-width: 300px;
+    max-height: 250px;
     border-radius: var(--header-radius);
+    margin-bottom: 20px;
 }
 
 #company_name {
@@ -222,7 +227,7 @@
     font-weight: 600;
 }
 
-.descr {
+.descr {  
     display: none;
     width: 300px;
     white-space: pre-wrap;
@@ -231,7 +236,7 @@
     font-weight: 400;
 }
 
-.customer-card:hover .descr{
+/* .customer-card:hover .descr{
     transition: all 0.5s ease 0s;
     display: block;
 }
@@ -242,7 +247,7 @@
 
 .customer-card:hover img{
     display: none;
-}
+} */
 
 #contact_us {
     border-radius: var(--header-radius);
