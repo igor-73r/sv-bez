@@ -24,6 +24,14 @@
     margin: 20px;
 }
 
+.back-button {
+    margin-left: 20px; 
+    font-weight:700; 
+    height: 24px;
+    display: flex; 
+    align-items: center;
+}
+
 .brand {
     margin: 20px 0;
     font-size: 35px;
@@ -77,6 +85,7 @@ tr.even {
     max-width: 400px;
     border-radius: var(--border-radius);
 }
+
 .product-image{
     display: flex;
     height: 400px;
@@ -127,6 +136,17 @@ tr.even {
     background-color: var(--clr2);
 }
 
+
+p {
+    width: 100%;
+}
+
 .extra img:hover{
     transform: scale(105%);
+}
+
+@media (max-width: 990px) {
+    .text{
+        -webkit-text-size-adjust: 100%;
+    }
 }

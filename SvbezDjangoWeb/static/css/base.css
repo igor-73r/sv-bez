@@ -333,6 +333,10 @@ footer .main-content a:hover{
     color: lightgray;
 }
 
+.errorlist {
+    display: none;
+}
+
 @media (max-width: 990px) {
     #contact-form-pop-up {
         max-width: 60%;

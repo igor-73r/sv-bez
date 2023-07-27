@@ -37,6 +37,9 @@ EMAIL_HOST_USER = EMAIL_USER
 EMAIL_HOST_PASSWORD = EMAIL_PASSWORD
 EMAIL_USE_TLS = True
 
+RECAPTCHA_PUBLIC_KEY = PUBLIC_KEY_CAPTCHA
+RECAPTCHA_PRIVATE_KEY = PRIVATE_KEY_CAPTCHA
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -47,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'store.apps.StoreConfig',
+    'captcha',
     # 'django-sass-processor'
 ]
 

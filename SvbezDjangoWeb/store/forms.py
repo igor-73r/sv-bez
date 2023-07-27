@@ -1,12 +1,15 @@
 from django import forms
 from .models import ProductsCategoriesProperties, ProductsPropertiesValues, Products
 from django.db.models import Max, Min
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Invisible
 
 
 class FeedbackForm(forms.Form):
     username = forms.CharField(max_length=50, label="Ваше имя", required=True)
     phone_number = forms.CharField(max_length=11, required=True, label="Номер телефона")
     email = forms.EmailField(required=False, label="Email")
+    captcha = ReCaptchaField(widget=ReCaptchaV2Invisible, label='')
 
 
 class ExtendedFeedbackForm(FeedbackForm):
