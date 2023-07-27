@@ -59,20 +59,20 @@
         <h2>Описание:</h2>
         <div class="description-block">
             <div class="text">
-            <p>{{ product.description }}</p>
+                <p>{{ product.description }}</p>
             </div>
         </div>
         <h2>Характеристики:</h2>
         <div class="props-block">
             <div class="text">
-            <table cellspacing="0" cellpadding="0">
-                {% for i in properties %}
-                    <tr class="{% cycle 'odd' 'even' %}">
-                        <td class="prop-name">{{ i.property_name }}: </td>
-                        <td class="prop-value">{{ i.value }}</td>
-                    </tr>
-                {% endfor %}
-            </table>
+                <table cellspacing="0" cellpadding="0">
+                    {% for i in properties %}
+                        <tr class="{% cycle 'odd' 'even' %}">
+                            <td class="prop-name">{{ i.property_name }}: </td>
+                            <td class="prop-value">{{ i.value }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </div>

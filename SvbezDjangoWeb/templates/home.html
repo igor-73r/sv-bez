@@ -80,21 +80,23 @@
             <h1>Наши клиенты</h1>
             <p>Нам доверяют как крупные государственные компании, так и небольшие частные предприятия</p>
         </div>
-        <div class="customer-cards">
-            {% for i in customers %}
-                <div class="customer-card">
-                    <div class="inner">
-                        <div class="descr">{{ i.company_description }}</div>
-                        <div class="front">
-                            {% if i.company_logo %}
-                                <img id="logo" src="{{ i.company_logo.url }}" alt="">
-                            {% else %}
-                            {% endif %}
-                            <p id="company_name">{{ i.company_name }}</p>
+        <div class="customer_cards">
+            <div class="customer-cards">
+                {% for i in customers %}
+                    <div class="customer-card">
+                        <div class="inner">
+                            <div class="descr">{{ i.company_description }}</div>
+                            <div class="front">
+                                {% if i.company_logo %}
+                                    <img id="logo" src="{{ i.company_logo.url }}" alt="">
+                                {% else %}
+                                {% endif %}
+                                <p id="company_name">{{ i.company_name }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% endfor %}
+                {% endfor %}
+            </div>
         </div>
 </section>
 
@@ -116,6 +118,7 @@
             <form method="POST" action="">
                 {% csrf_token %}
                 {{ feedback_form }}
+                <!-- <div class="g-recaptcha" data-sitekey="6LeqtVwnAAAAAD8jpJA5mN8R9yP-bqF3EwomMSH9"></div> -->
                 <input type="submit" value="Отправить">
             </form>
         </div>
