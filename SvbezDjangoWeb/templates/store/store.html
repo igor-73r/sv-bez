@@ -95,19 +95,20 @@
                             <div class="text">
                                 <p>{{ product.description | truncatewords:15 }}</p>
                             </div>
-                            <div class="bottom-data">
-                                <div>
-                                    <a href="javascript:PopUpShow('{{product.brand}} {{product.model}}')">Заказать</a>
-                                </div>
-                                <div class="price">
-                                    {% if product.sale %}
-                                        <p class="new-price">{{ product.sale }} ₽</p>
-                                        <s class="old-price">{{ product.price }} ₽</s>
-                                    {%  else %}
-                                        <p>{{ product.price }} ₽</p>
-                                    {% endif %}
-                                </div>
+                        <!-- </div> -->
+                        <div class="bottom-data">
+                            <div class="feedback-button">
+                                <a href="javascript:PopUpShow('{{product.brand}} {{product.model}}')">Заказать</a>
                             </div>
+                            <div class="price">
+                                {% if product.sale %}
+                                    <p class="new-price">{{ product.sale }} ₽</p>
+                                    <s class="old-price">{{ product.price }} ₽</s>
+                                {%  else %}
+                                    <p>{{ product.price }} ₽</p>
+                                {% endif %}
+                            </div>
+                        </div>
                         </div>
                     </div>
                 {% endif %}
