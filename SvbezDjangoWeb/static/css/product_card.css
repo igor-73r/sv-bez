@@ -176,7 +176,7 @@ input[type="checkbox"] {
 }
 
 .my-button {
-    margin: 0 5px 10px 5px;
+    /* margin: 0 5px 10px 5px; */
     width: 103px;
     background-color: tomato;
     color: var(--clr2);
@@ -199,6 +199,7 @@ input[type="checkbox"] {
 .buttons{
     display: flex;
     justify-content: space-between;
+    margin: 0px 15px 0px 10px;
 }
 
 .product-image {
@@ -206,6 +207,7 @@ input[type="checkbox"] {
     display: flex;
     align-items: center;
     padding: 10px;
+    
 }
 
 .filters {
@@ -215,7 +217,6 @@ input[type="checkbox"] {
 .left-side-bar{
     margin-top: 20px;
     display: block;
-
 }
 
 .scroll-data {
