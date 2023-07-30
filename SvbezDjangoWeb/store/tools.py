@@ -6,7 +6,6 @@ from .models import Products
 
 
 def search_product(product=None):
-    # print(searched_products)
     searched_products = Products.objects.annotate(search=SearchVector('brand') +
                                                          SearchVector('model') +
                                                          SearchVector('description')).filter(search=product)

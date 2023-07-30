@@ -323,31 +323,30 @@ section.sub-header {
 }
 
 .search-field input:focus{
+    outline: none;
     outline-width: 0;
+}
+
+.search-field input:-moz-focusring{
+    border-width: 0;
 }
 
 .search-field input::-webkit-input-placeholder{
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 17px;
 }
 
 .search-field input:-ms-input-placeholder {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 600;
-    font-size: 14px; 
+    font-size: 17px; 
 }
   
 .search-field input:-moz-placeholder {
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 600;
-    font-size: 14px;
-}
-
-.search-field input::-moz-placeholder {
-    font-family: 'Nunito Sans', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
+    font-size: 17px;
 }
 
 .search-field form{

@@ -26,7 +26,6 @@ class CategoryFilterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(CategoryFilterForm, self).__init__(*args)
         self.label_suffix = ""
-        custom_checkbox_widget = forms.CheckboxSelectMultiple(attrs={'class': 'custom-checkbox'})
         if 'category' in kwargs:
             products = Products.objects.filter(category=kwargs.get('category'))
             brands_list = products.values_list('brand', flat=True).distinct()
@@ -34,7 +33,7 @@ class CategoryFilterForm(forms.Form):
         else:
             products = Products.objects.all()
             brands_list = products.values_list('brand', flat=True).distinct()
-            available_price = products.aggregate(Min('price'), Max('price'))
+            available_price = products.filter(is_published=True).aggregate(Min('price'), Max('price'))
         min_price = available_price['price__min']
         max_price = available_price['price__max']
         brands = ()

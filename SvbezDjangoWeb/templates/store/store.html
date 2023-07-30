@@ -119,8 +119,8 @@
                             </div>
                             <div class="price">
                                 {% if product.sale %}
-                                    <p class="new-price">{{ product.sale }} ₽</p>
-                                    <s class="old-price">{{ product.price }} ₽</s>
+                                    <p class="new-price">{{ product.price }} ₽</p>
+                                    <s class="old-price">{{ product.sale }} ₽</s>
                                 {%  else %}
                                     <p>{{ product.price }} ₽</p>
                                 {% endif %}
