@@ -29,12 +29,18 @@ $(document).ready(function($) {
 
         //HIDE HEADER
         currentScroll = $(window).scrollTop()
+        let sub_header = $('.sub-header')
         const headerHidden = () => header.hasClass('header_hidden')
+        const subHeaderHidden = () => sub_header.hasClass('sub-header_hidden')
+
         if (currentScroll > prevScroll && !headerHidden()) { // если прокручиваем страницу вниз и header не скрыт
             header.addClass('header_hidden')
+            sub_header.addClass('sub-header_hidden')
         }
         if (currentScroll < prevScroll && headerHidden() && !expression) { // если прокручиваем страницу вверх и header скрыт
             header.removeClass('header_hidden')
+            sub_header.removeClass('sub-header_hidden')
+
         }
         prevScroll = currentScroll
     });

@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from .tools import encrypt
+from .filename_encryption import encrypt
 from django.utils.safestring import mark_safe
 
 

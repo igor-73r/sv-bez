@@ -1,23 +1,9 @@
 from django.shortcuts import render, redirect
+from django.views import View
 from .models import Products, ProductsPropertiesValues, ProductsCategories, Brands, OurCustomers, ProductsExtraPhotos
 from .filters import filtered_products, extended_filter_products
-from .forms import CategoryFilterForm, FeedbackForm, ExtendedFeedbackForm
-from .tools import send_email, price_field_validation
-
-
-def extended_form_handler(request, subject="Расширенное обращение"):
-    extended_form = ExtendedFeedbackForm()
-    if request.method == 'POST':
-        extended_form = ExtendedFeedbackForm(request.POST)
-        if extended_form.is_valid():
-            send_email(subject=subject,
-                       body=f"Имя: {extended_form.cleaned_data['username']}\n"
-                            f"Тел: {extended_form.cleaned_data['phone_number']}\n"
-                            f"Почта: {extended_form.cleaned_data['email']}\n"
-                            f"--- --- ---\n"
-                            f"Сообщение: {extended_form.cleaned_data['content']}")
-            extended_form = ExtendedFeedbackForm()
-    return extended_form
+from .forms import CategoryFilterForm, FeedbackForm, ExtendedFeedbackForm, FullTextSearch
+from .tools import send_email, price_field_validation, extended_form_handler, search_product
 
 
 def home_page(request):
@@ -40,6 +26,7 @@ def home_page(request):
 
 
 def base_store_view(request):
+    search_form = FullTextSearch()
     categories = ProductsCategories.objects.all()
     ext_feedback_form = extended_form_handler(request, subject="Запрос на приобретение товара")
     props = request.GET
@@ -48,6 +35,8 @@ def base_store_view(request):
     if request.GET.get('price_min') or request.GET.get('price_max'):
         props = price_field_validation(request)
     products = filtered_products(props)
+    if request.GET.get('search_field'):
+        products = search_product(request.GET.get('search_field'))
     form = CategoryFilterForm(props)
     return render(request, "store/store.html", locals())
 

@@ -60,7 +60,13 @@ header {
 }
 
 .header_hidden {
+    z-index: 999999;
     transform: translateY(-150%);
+}
+
+.sub-header_hidden {
+    /* z-index: 10; */
+    transform: translateY(-500%);
 }
 
 .wrap.sticky header {

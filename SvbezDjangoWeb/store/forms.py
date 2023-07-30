@@ -16,6 +16,12 @@ class ExtendedFeedbackForm(FeedbackForm):
     content = forms.CharField(widget=forms.Textarea, required=False, label="Сообщение", max_length=700)
 
 
+class FullTextSearch(forms.Form):
+    search_field = forms.CharField(max_length=255,
+                                   widget=forms.TextInput(attrs={'placeholder': 'Найти'}),
+                                   label="", required=False)
+
+
 class CategoryFilterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(CategoryFilterForm, self).__init__(*args)
