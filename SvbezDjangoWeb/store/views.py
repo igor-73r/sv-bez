@@ -28,7 +28,10 @@ def base_store_view(request, category=None):
     search_form = FullTextSearch()
     categories = ProductsCategories.objects.all()
     sort_form = SortForm(request.GET)
-    selected = dict(sort_form.sort_types)[request.GET.get('sort_type')]
+    try:
+        selected = dict(sort_form.sort_types)[request.GET.get('sort_type')]
+    except KeyError:
+        selected = "По релевантности"
     ext_feedback_form = extended_form_handler(request, subject="Запрос на приобретение товара")
     props = request.GET
     if 'dismiss' in props:
