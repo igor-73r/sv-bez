@@ -12,7 +12,27 @@
 <link rel="stylesheet" href="{% static 'css/product_card.css' %}">
 {% endblock %}
 
+
 {% block content %}
+
+<section class="sub-header">
+    <div class="search-field">
+        <form name="myform"  method="GET">
+            {{ search_form }}
+            <span class="material-symbols-rounded" onclick="myform.submit()">search</span>
+        </form>
+    </div>
+    <div class="sort-field">
+        <div class="selected">
+            {{selected}} <span class="material-symbols-rounded">arrow_drop_down</span>
+        </div>
+        <form class="sort_form" name="sort_form" method="GET">
+            {{ sort_form }}
+        </form>
+    </div>
+</section>
+
+
 <section class="categories">
     <div class="headline" id="category_head">
         Категории
@@ -104,8 +124,8 @@
                             </div>
                             <div class="price">
                                 {% if product.sale %}
-                                    <p class="new-price">{{ product.sale }} ₽</p>
-                                    <s class="old-price">{{ product.price }} ₽</s>
+                                    <p class="new-price">{{ product.price }} ₽</p>
+                                    <s class="old-price">{{ product.sale }} ₽</s>
                                 {%  else %}
                                     <p>{{ product.price }} ₽</p>
                                 {% endif %}

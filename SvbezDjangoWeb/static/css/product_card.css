@@ -291,3 +291,141 @@ input[type="checkbox"] {
         width: 50%;
     }
 }
+
+section.sub-header {
+    border-radius: var(--header-radius);
+    top: 175px;
+    position: sticky;
+    height: 55px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    padding: 10px;
+    z-index: 9999;
+    transition: 0.5s;
+    box-shadow: 0 11px 50px -10px rgba(0, 0, 0, 0.25);
+
+}
+
+.search-field{
+    border-radius: var(--header-radius);
+    padding: 5px 10px;
+    margin: 0 3px;
+    background-color: var(--clr3);
+}
+
+.search-field input{
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-field input:focus{
+    outline: none;
+    outline-width: 0;
+}
+
+.search-field input:-moz-focusring{
+    border-width: 0;
+}
+
+.search-field input::-webkit-input-placeholder{
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.search-field input:-ms-input-placeholder {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 17px; 
+}
+  
+.search-field input:-moz-placeholder {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.search-field form{
+    display: flex;
+    align-items: center;
+}
+
+.search-field span{
+    font-size: 25px;
+    font-weight: 900;
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 600,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+.search-field span:hover{
+    color: var(--clr4);
+    cursor: pointer;
+}
+
+.sort-field{
+    display: flex;
+    flex-direction: column;
+    /* position: absolute; */
+    /* right: -200px; */
+    align-items: center;
+}
+
+.selected{
+    /* top: 10px;
+    position: absolute; */
+    margin-left: 20px;
+    z-index: 999;
+    width: 175px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.selected span{
+    font-size: 30px;
+    transition: all 0.4s;
+}
+
+.selected:hover {
+    color: var(--clr4);
+}
+
+.sort_form{
+    background-color: var(--clr2);
+    padding: 10px;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding-top: 35px;
+    border-radius: var(--border-radius);
+    z-index: 99;
+    width: 195px;
+    box-shadow: 0 6px 5px -5px rgba(0, 0, 0, 0.25);
+    display: none;
+}
+
+.rotate_arrow {
+    transform: rotate(180deg);
+}
+
+#id_sort_type input[type="radio"]{
+    display: none;
+}
+
+#id_sort_type label{
+    line-height: 30px;
+    cursor: pointer;
+}
+
+#id_sort_type label:hover {
+    color: var(--clr4);
+}
+
+.disable

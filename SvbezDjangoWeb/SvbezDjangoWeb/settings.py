@@ -90,18 +90,18 @@ WSGI_APPLICATION = 'SvbezDjangoWeb.wsgi.application'
 
 if DEBUG:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
         # 'default': {
-        #     'ENGINE': 'django.db.backends.postgresql',
-        #     'NAME': 'svbez-debug',
-        #     'USER': 'postgres',
-        #     'PASSWORD': 'admin',
-        #     'HOST': 'localhost',
-        #     'PORT': '5432',
+        #     'ENGINE': 'django.db.backends.sqlite3',
+        #     'NAME': BASE_DIR / 'db.sqlite3',
         # }
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'svbez',
+            'USER': 'postgres',
+            'PASSWORD': 'admin',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
     }
 else:
     DATABASES = {

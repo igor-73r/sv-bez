@@ -138,7 +138,7 @@ tr.even {
 
 
 p {
-    width: 100%;
+    width: fit-content;
 }
 
 .extra img:hover{

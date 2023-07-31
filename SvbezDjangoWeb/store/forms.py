@@ -16,11 +16,26 @@ class ExtendedFeedbackForm(FeedbackForm):
     content = forms.CharField(widget=forms.Textarea, required=False, label="Сообщение", max_length=700)
 
 
+class FullTextSearch(forms.Form):
+    search_field = forms.CharField(max_length=255,
+                                   widget=forms.TextInput(attrs={'placeholder': 'Найти'}),
+                                   label="", required=False)
+
+
+class SortForm(forms.Form):
+    sort_types = (
+        ("", "По релевантности"),
+        ("price_descending", "Сначало дороже"),
+        ("price_ascending", "Сначало дешевле"),
+    )
+
+    sort_type = forms.ChoiceField(choices=sort_types, required=False, label="", widget=forms.RadioSelect)
+
+
 class CategoryFilterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(CategoryFilterForm, self).__init__(*args)
         self.label_suffix = ""
-        custom_checkbox_widget = forms.CheckboxSelectMultiple(attrs={'class': 'custom-checkbox'})
         if 'category' in kwargs:
             products = Products.objects.filter(category=kwargs.get('category'))
             brands_list = products.values_list('brand', flat=True).distinct()
@@ -28,7 +43,7 @@ class CategoryFilterForm(forms.Form):
         else:
             products = Products.objects.all()
             brands_list = products.values_list('brand', flat=True).distinct()
-            available_price = products.aggregate(Min('price'), Max('price'))
+            available_price = products.filter(is_published=True).aggregate(Min('price'), Max('price'))
         min_price = available_price['price__min']
         max_price = available_price['price__max']
         brands = ()

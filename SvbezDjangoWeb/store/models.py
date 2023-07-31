@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from .tools import encrypt
+from .filename_encryption import encrypt
 from django.utils.safestring import mark_safe
 
 
@@ -62,8 +62,8 @@ class Products(models.Model):
                               on_delete=models.SET_NULL, verbose_name="Бренд")
     model = models.CharField("Модель", max_length=255)
     slug = models.SlugField('URL', max_length=255, unique=True, db_index=True)
-    price = models.IntegerField("Цена")
-    sale = models.IntegerField("Скидка", null=True, blank=True)
+    price = models.IntegerField("Актуальная цена")
+    sale = models.IntegerField("Старая цена", null=True, blank=True)
     description = models.TextField("Описание")
     category = models.ForeignKey(ProductsCategories,
                                  on_delete=models.SET_NULL,
