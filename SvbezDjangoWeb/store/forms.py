@@ -22,6 +22,16 @@ class FullTextSearch(forms.Form):
                                    label="", required=False)
 
 
+class SortForm(forms.Form):
+    sort_types = (
+        ("", "По релевантности"),
+        ("price_descending", "Сначало дороже"),
+        ("price_ascending", "Сначало дешевле"),
+    )
+
+    sort_type = forms.ChoiceField(choices=sort_types, required=False, label="", widget=forms.RadioSelect)
+
+
 class CategoryFilterForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(CategoryFilterForm, self).__init__(*args)

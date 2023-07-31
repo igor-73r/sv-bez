@@ -74,6 +74,10 @@ $('.arrow').click(function(){
     $("html").animate({ scrollTop: $('html').prop("scrollHeight")}, 1200);
 });
 
+$('#id_sort_type').on('change', function() {
+    document.forms["sort_form"].submit();
+ });
+
 
 $('.label').click(function(){
     let element = $(this).parent().children('.drop-down-data')
@@ -94,6 +98,18 @@ $('.filters').click(function(){
         element.show();
     }else{
         element.removeAttr( 'style' );
+    }
+});
+
+$('.selected').click(function(){
+    let element = $(this).siblings('.sort_form')
+    let arrow = $(this).children('span')
+    if(element.is(":hidden")){
+        element.show();
+        arrow.addClass('rotate_arrow')
+    }else{
+        element.hide();
+        arrow.removeClass('rotate_arrow')
     }
 });
 

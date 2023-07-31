@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Products, ProductsPropertiesValues, ProductsCategories, Brands, OurCustomers, ProductsExtraPhotos
 from .filters import filtered_products
-from .forms import CategoryFilterForm, FeedbackForm, ExtendedFeedbackForm, FullTextSearch
+from .forms import CategoryFilterForm, FeedbackForm, ExtendedFeedbackForm, FullTextSearch, SortForm
 from .tools import send_email, price_field_validation, extended_form_handler, search_product
 
 
@@ -27,6 +27,8 @@ def home_page(request):
 def base_store_view(request, category=None):
     search_form = FullTextSearch()
     categories = ProductsCategories.objects.all()
+    sort_form = SortForm(request.GET)
+    selected = dict(sort_form.sort_types)[request.GET.get('sort_type')]
     ext_feedback_form = extended_form_handler(request, subject="Запрос на приобретение товара")
     props = request.GET
     if 'dismiss' in props:
@@ -42,6 +44,13 @@ def base_store_view(request, category=None):
     if request.GET.get('search_field'):
         products = search_product(request.GET.get('search_field'))
         search_form = FullTextSearch(request.GET)
+    if request.GET.get('sort_type'):
+        match request.GET.get('sort_type'):
+            case "price_descending":
+                products = products.order_by("-price")
+            case "price_ascending":
+                products = products.order_by("price")
+
     return render(request, "store/store.html", locals())
 
 
