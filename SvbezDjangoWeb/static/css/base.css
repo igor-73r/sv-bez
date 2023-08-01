@@ -65,7 +65,6 @@ header {
 }
 
 .sub-header_hidden {
-    /* z-index: 10; */
     transform: translateY(-500%);
 }
 
