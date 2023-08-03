@@ -26,7 +26,7 @@ SECRET_KEY = SECRET_KEY_VALUE
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", IPV4]
 
 CSRF_TRUSTED_ORIGINS = ['https://svbez.ru', 'https://www.svbez.ru']
 

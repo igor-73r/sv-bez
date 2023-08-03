@@ -35,7 +35,10 @@ def base_store_view(request, category=None):
     ext_feedback_form = extended_form_handler(request, subject="Запрос на приобретение товара")
     props = request.GET
     if 'dismiss' in props:
-        return redirect(request.META['HTTP_REFERER'])
+        if category:
+            return redirect("cat_store", category=category)
+        else:
+            return redirect("base_store")
     if request.GET.get('price_min') or request.GET.get('price_max'):
         props = price_field_validation(request)
     if category:

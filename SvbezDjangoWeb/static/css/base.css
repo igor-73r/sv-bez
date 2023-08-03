@@ -138,7 +138,7 @@ header nav ul li a {
     font-weight: 800;
 }
 
-header nav ul li span {
+header nav ul li span{
     padding: 8px;
     flex-shrink: 0;
     border-radius: 23px;
@@ -203,10 +203,23 @@ footer nav ul li {
     .wrapper {
         padding: 0 10px 100px 10px !important;
     }
+    
     .header{
         width: 100%;
     }
 
+    .header-buttons span {
+        font-size: 70px;
+    }
+
+    .header-buttons {
+        font-size: 20px;
+        width: 400px;
+    }
+
+    .header-buttons ul{
+        width: 100%;
+    }
 }
 
 body, html {
@@ -344,8 +357,26 @@ footer .main-content a:hover{
 
 @media (max-width: 990px) {
     #contact-form-pop-up {
-        max-width: 60%;
+        max-width: 90%;
+        font-size: 27px;
     }
+
+    #contact-form-pop-up span{
+        font-size: 60px;
+    }
+
+    #contact-form-pop-up label{
+        margin-top: 20px;
+    }
+
+    #contact-form-pop-up form input{
+        font-size: 27px;
+    }
+
+    #contact-form-pop-up form textarea{
+        font-size: 27px;
+    }
+
     .our-links svg {
         font-size: 14px;
         width: auto;
