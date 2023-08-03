@@ -16,6 +16,9 @@
 {% block content %}
 
 <section class="sub-header">
+    <div class="filters">
+        <span class="material-symbols-rounded">filter_list</span>
+    </div>
     <div class="search-field">
         <form name="myform"  method="GET">
             {{ search_form }}
@@ -30,6 +33,44 @@
             {{ sort_form }}
         </form>
     </div>
+</section>
+
+<div class="tint"></div>
+
+<section class="mobile-left-side-bar">
+    <a href="javascript:FiltersHide()"><span class="material-symbols-rounded">close</span></a>
+    {% if form %}
+    <form method="GET">
+        <div class="scroll-data">
+            {% for f in form %}
+                    {% if f.name == 'price_min' %}
+                        <div class="item">
+                            <div class="label" id="price">
+                                Цена:
+                            </div>
+                            <div class="price-field">
+                                {{ form.price_min }} {{ form.price_max }}
+                            </div>
+                        </div>
+                    {% elif f.name == 'price_max' %}
+                    {% else %}
+                        <div class="item">
+                            <div class="label">
+                                {{ f.label_tag }}
+                            </div>
+                            <div class="drop-down-data">
+                                {{ f }}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="buttons">
+            <input class="my-button" type="submit" value="Применить">
+            <input class="my-button" id="dismiss" type="submit" name="dismiss" value="Сбросить">
+        </div>
+    </form>
 </section>
 
 
@@ -56,14 +97,8 @@
 </section>
 
 <div>
-    <div class="filters">
-        <span class="material-symbols-rounded">filter_list</span>
-    </div>
-    <section class="left-side-bar">
-    {#    <div class="headline" id="category_head">#}
-    {#        Фильтр#}
-    {#    </div>#}
 
+    <section class="left-side-bar">
         {% if form %}
         <form method="GET">
             <div class="scroll-data">

@@ -33,7 +33,7 @@ $(document).ready(function($) {
         const headerHidden = () => header.hasClass('header_hidden')
         const subHeaderHidden = () => sub_header.hasClass('sub-header_hidden')
 
-        if (currentScroll > prevScroll && !headerHidden()) { // если прокручиваем страницу вниз и header не скрыт
+        if (currentScroll > prevScroll && !headerHidden() && $('.mobile-left-side-bar').is(":hidden")) { // если прокручиваем страницу вниз и header не скрыт
             header.addClass('header_hidden')
             sub_header.addClass('sub-header_hidden')
         }
@@ -93,13 +93,27 @@ $('.label').click(function(){
 });
 
 $('.filters').click(function(){
-    let element = $(this).siblings('.left-side-bar')
+    let element = $('.mobile-left-side-bar');
+    let tint = $(".tint")
     if(element.is(":hidden")){
+        tint.show();
         element.show();
+        $(this).addClass('rotate_arrow')
     }else{
+        tint.hide();
         element.removeAttr( 'style' );
+        $(this).removeClass('rotate_arrow')
+
     }
 });
+
+function FiltersHide(){
+    let element = $('.mobile-left-side-bar');
+    let tint = $(".tint");
+    tint.hide();
+    element.removeAttr( 'style' );
+    $('.filters').removeClass('rotate_arrow');
+}
 
 $('.selected').click(function(){
     let element = $(this).siblings('.sort_form')

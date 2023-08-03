@@ -65,6 +65,14 @@ class ProductsAdmin(admin.ModelAdmin):
         else:
             return [inline(self.model, self.admin_site) for inline in self.inlines]
 
+    def save_model(self, request, obj, form, change):
+        """
+        Auto-increases price on 10%
+        """
+        if not change:
+            obj.price = int(obj.price * 1.1)
+        obj.save()
+
 
 @admin.register(ProductsProperties)
 class ProductsPropertiesAdmin(admin.ModelAdmin):

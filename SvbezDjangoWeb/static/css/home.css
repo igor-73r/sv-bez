@@ -112,8 +112,17 @@
     margin-left: auto;
 }
 
-.about-item#second, .about-item#first {
+.about-item#first {
+    max-width: 800px;
+}
+
+.about-item#second {
     max-width: 850px;
+}
+
+.about-item#third {
+    max-width: 850px;
+    margin-left: 50px;
 }
 
 .about-item img{
@@ -310,11 +319,16 @@
 
 @media (max-width:990px) {
     #welcome-block, #about_us, #our_customers, #our_partners, #contact_us{
-        width: 100%;
+        width: 98%;
     }
 
     #welcome-block {
         padding: 30px 0;
+        height: 700px;
+    }
+
+    .welcome-interactive {
+        height: 100%;
     }
 
     .short-info p {font-size: 23px}
@@ -324,7 +338,7 @@
     }
 
     .welcome-buttons #button {
-        font-size: 25px;
+        font-size: 27px;
     }
 
     .welcome-image img {
@@ -332,4 +346,89 @@
         height: 350px;
     }
 
+    #about_us {
+        padding: 20px;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about-item#first, .about-item#second, .about-item#third {
+        width: 100%;
+        max-width: 100%;
+        margin: 30px 0;
+        padding: 0;
+    }
+
+    .about-item .text{
+        font-size: 27px;
+        background: none;
+        padding: 30px;
+        font-style: normal;
+        /* font-weight: 600; */
+        line-height: 37px;
+        width: 50%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .about-item .image {
+        margin: 0;
+        width: 50%; 
+    }
+
+    #first img, #second img, #third img{
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+
+    #first img, #third img {
+        border-radius: 0 43px 43px 0;
+    }
+
+    #second img {
+        border-radius: 43px 0 0 43px;
+    }
+
+    .short-info p {
+        font-size: 27px;
+    }
+
+    #contact_us .data {
+        flex-direction: column;
+    }
+
+    #contact_us .map {
+        height: 400px;
+        width: 98%;
+    }
+
+    #contact_us .text{
+        max-width: 100%;
+        width: 100%;
+    }
+
+    #contact_us .text p{
+        /* height: 50%; */
+        font-size: 27px;
+        line-height: 37px;
+    }
+
+    p#phone {
+        margin: 20px 0;
+    }
+
+    #contact_us .text form{
+        width: 100%;
+        font-size: 27px;
+        line-height: 37px;
+        margin: 20px 0;
+    }
+
+    #contact_us .text form input{
+        /* width: 70%; */
+        font-size: 27px;
+        /* line-height: 37px; */
+    }
 }
