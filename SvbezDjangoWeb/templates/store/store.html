@@ -88,9 +88,10 @@
                 </a>
             {% endif %}
             <a href="{% url 'cat_store' cat.id %}">
-                <div class="category_block">
+                <div class="category_block" id="{{ cat.id }}">
                     {{ cat.category_name }}
                 </div>
+                <hr class="hint-line" id="{{ cat.id }}">
             </a>
         {% endfor %}
     </div>
