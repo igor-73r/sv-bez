@@ -7,6 +7,7 @@ from django.utils.safestring import mark_safe
 class ProductsProperties(models.Model):
     property_name = models.CharField(unique=True, max_length=255)
     slug = models.SlugField('URL', max_length=255, unique=True, db_index=True)
+    filter_available = models.BooleanField("Доступно в блоке фильтров", default=True)
 
     class Meta:
         verbose_name = 'Характеристика товара'

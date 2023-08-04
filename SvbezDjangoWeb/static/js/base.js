@@ -15,6 +15,17 @@ $(document).ready(function($) {
         }
 
     }
+
+    let categories = document.getElementsByClassName('category_block');
+    for (let cat in categories){
+        let cat_item = $(categories[cat])
+        let cat_id = $(categories[cat]).attr('id');
+        if(cat_id != null && $.cookie(cat_id) === "hint"){
+            let hint_line = cat_item.siblings('hr')
+            hint_line.show();
+        }
+    }
+
     $(window).on('scroll', function() {
 
         //ADD .TIGHT
@@ -136,9 +147,24 @@ function clearMyCookie(){
     }
 }
 
-$('#dismiss').click(clearMyCookie);
+function clearHintCookie(){
+    let cookies = $.cookie()
+    for (let cookie in cookies){
+        if($.cookie(cookie) === "hint"){
+            $.removeCookie(cookie)
+        }
+    }
+}
 
-$('.category_block').click(clearMyCookie);
+$('.mobile-left-side-bar #dismiss').click(clearMyCookie);
+$('.left-side-bar #dismiss').click(clearMyCookie);
+
+$('.category_block').click(function(){
+    $(this).addClass(".hint-cat");
+    clearHintCookie();
+    $.cookie($(this).attr('id'), 'hint')
+    clearMyCookie();
+});
 
 $('.extra img').click(function(){
     $('.product-image img').attr('src', $(this).attr('src'));
