@@ -42,11 +42,18 @@ $(document).ready(function($) {
         currentScroll = $(window).scrollTop()
         let sub_header = $('.sub-header')
         const headerHidden = () => header.hasClass('header_hidden')
-        const subHeaderHidden = () => sub_header.hasClass('sub-header_hidden')
-
-        if (currentScroll > prevScroll && !headerHidden() && $('.mobile-left-side-bar').is(":hidden")) { // если прокручиваем страницу вниз и header не скрыт
-            header.addClass('header_hidden')
-            sub_header.addClass('sub-header_hidden')
+        let mlsb = document.getElementsByClassName('mobile-left-side-bar').length;
+        
+        if (mlsb){
+            if (currentScroll > prevScroll && !headerHidden() && $('.mobile-left-side-bar').is(":hidden")) { // если прокручиваем страницу вниз и header не скрыт
+                header.addClass('header_hidden')
+                sub_header.addClass('sub-header_hidden')
+            }
+        }else{
+            if (currentScroll > prevScroll && !headerHidden()) { // если прокручиваем страницу вниз и header не скрыт
+                header.addClass('header_hidden')
+                sub_header.addClass('sub-header_hidden')
+            }
         }
         if (currentScroll < prevScroll && headerHidden() && !expression) { // если прокручиваем страницу вверх и header скрыт
             header.removeClass('header_hidden')
