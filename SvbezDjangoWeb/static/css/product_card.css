@@ -279,7 +279,7 @@ hr {
     padding: 0;
 }
 
-@media (max-width: 990px), (max-width: 1500px){
+@media (max-width: 990px){
     .left-side-bar {
         display: none;
     }
@@ -336,7 +336,7 @@ hr {
     }
 
     .header {
-        z-index: 9999;
+        z-index: 99999;
     }
 
     .filters {

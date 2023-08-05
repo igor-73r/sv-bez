@@ -4,7 +4,9 @@ $(document).ready(function($) {
     let prevScroll = $(window).scrollTop()
     let currentScroll
     let elems = document.getElementsByClassName('drop-down-data')
-    $(document.getElementById('id_brand')).parent().show()
+    console.log($('#id_brand').parent())
+    $('.mobile-left-side-bar #id_brand').parent().show();
+    $('.left-side-bar #id_brand').parent().show();
     for (let elem in elems){
         let this_element = $(elems[elem]).children('div')
         let element_id = this_element.attr('id')
@@ -13,8 +15,8 @@ $(document).ready(function($) {
                 this_element.parent().show()
             }
         }
-
     }
+
 
     let categories = document.getElementsByClassName('category_block');
     for (let cat in categories){
@@ -98,7 +100,7 @@ $('#id_sort_type').on('change', function() {
 
 
 $('.label').click(function(){
-    let element = $(this).parent().children('.drop-down-data')
+    let element = $(this).siblings('.drop-down-data')
     if(element.is(":hidden")){
         element.show();
         $.cookie(element.children('div').attr('id'), 'show')

@@ -355,7 +355,23 @@ footer .main-content a:hover{
     display: none;
 }
 
+@media (max-width: 1550px){
+    html {
+        zoom: 80%;
+    }
+}
+
+@media (max-width: 1250px){
+    html {
+        zoom: 65%;
+    }
+}
+    
 @media (max-width: 990px) {
+    html {
+        zoom: 100%;
+    }
+
     #contact-form-pop-up {
         max-width: 90%;
         font-size: 27px;

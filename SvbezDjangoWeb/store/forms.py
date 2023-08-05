@@ -54,22 +54,23 @@ class CategoryFilterForm(forms.Form):
         self.fields['price_min'] = forms.IntegerField(required=False,
                                                       widget=forms.NumberInput(attrs={
                                                           'placeholder': 'От ' + str(min_price)}),
-                                                      min_value=min_price, max_value=max_price)
+                                                      min_value=0)
         self.fields['price_max'] = forms.IntegerField(required=False,
                                                       widget=forms.NumberInput(attrs={
                                                           'placeholder': 'До ' + str(max_price)}),
-                                                      min_value=min_price, max_value=max_price)
+                                                      min_value=0)
 
         if 'category' in kwargs:
             category = kwargs.pop('category')
             properties = ProductsCategoriesProperties.objects.filter(category_name=category)
             products_ids = Products.objects.values_list('id', flat=True)
             for i in properties:
-                queryset = ProductsPropertiesValues.objects.\
-                    filter(product_id__in=products_ids, property_name=i).values_list('value', flat=True).distinct()
-                values = ()
-                for j in queryset:
-                    values += (j, j),
-                self.fields[i.property_name.slug] = forms.MultipleChoiceField(choices=values, label=str(i),
-                                                                              required=False,
-                                                                              widget=forms.CheckboxSelectMultiple)
+                if i.property_name.filter_available:
+                    queryset = ProductsPropertiesValues.objects.\
+                        filter(product_id__in=products_ids, property_name=i).values_list('value', flat=True).distinct()
+                    values = ()
+                    for j in queryset:
+                        values += (j, j),
+                    self.fields[i.property_name.slug] = forms.MultipleChoiceField(choices=values, label=str(i),
+                                                                                  required=False,
+                                                                                  widget=forms.CheckboxSelectMultiple)
