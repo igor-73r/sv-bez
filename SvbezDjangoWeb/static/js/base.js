@@ -4,7 +4,6 @@ $(document).ready(function($) {
     let prevScroll = $(window).scrollTop()
     let currentScroll
     let elems = document.getElementsByClassName('drop-down-data')
-    console.log($('#id_brand').parent())
     $('.mobile-left-side-bar #id_brand').parent().show();
     $('.left-side-bar #id_brand').parent().show();
     for (let elem in elems){
@@ -32,7 +31,6 @@ $(document).ready(function($) {
 
         //ADD .TIGHT
         let expression = $(window).scrollTop() + $(window).height() > $('.wrapper').outerHeight() && $(window).width() > 990;
-        console.log($(window).scrollTop() + $(window).height(), $('.wrapper').outerHeight(), $(window).width() > 990)
         if (expression) {
             $('body').addClass('tight');
         } else {

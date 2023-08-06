@@ -339,6 +339,11 @@ hr {
         display: block;
         line-height: 50px;
         font-weight: 500;
+        font-size: 30px;
+    }
+
+    .mobile-left-side-bar .item {
+        margin-top: 20px;
     }
 
     .mobile-left-side-bar .drop-down-data input[type="checkbox"]{
