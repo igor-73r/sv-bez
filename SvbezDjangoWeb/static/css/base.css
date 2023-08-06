@@ -359,6 +359,14 @@ footer .main-content a:hover{
     html {
         zoom: 80%;
     }
+    
+    .footer {
+        margin: auto;
+    }
+
+    .footer .developer {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 1250px){
@@ -368,6 +376,15 @@ footer .main-content a:hover{
 }
     
 @media (max-width: 990px) {
+    .footer {
+        height: 300px;
+    }
+
+    .footer .main-content{
+        flex-direction: column;
+        justify-content: space-around;
+        height: 100%;
+    }
     html {
         zoom: 100%;
     }

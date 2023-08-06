@@ -59,8 +59,9 @@ def base_store_view(request, category=None) -> HttpResponse:
                 products = products.order_by("price")
     response = render(request, "store/store.html", locals())
     if category:
-        response = clear_my_cookie(request, response)
-        response.set_cookie(str(category), "hint")
+        if str(category) not in request.COOKIES:
+            response = clear_my_cookie(request, response)
+            response.set_cookie(str(category), "hint")
     else:
         response = clear_my_cookie(request, response)
     return response

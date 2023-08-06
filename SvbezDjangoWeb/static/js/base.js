@@ -31,13 +31,12 @@ $(document).ready(function($) {
     $(window).on('scroll', function() {
 
         //ADD .TIGHT
-        let expression = $(window).scrollTop() + $(window).height() > $('.wrapper').outerHeight() && $(window).width() > 990
+        let expression = $(window).scrollTop() + $(window).height() > $('.wrapper').outerHeight() && $(window).width() > 990;
+        console.log($(window).scrollTop() + $(window).height(), $('.wrapper').outerHeight(), $(window).width() > 990)
         if (expression) {
             $('body').addClass('tight');
-            $('.arrow').hide();
         } else {
             $('body').removeClass('tight');
-            $('.arrow').show();
         }
 
         //HIDE HEADER
@@ -156,25 +155,13 @@ function clearMyCookie(){
     }
 }
 
-function clearHintCookie(){
-    let cookies = $.cookie()
-    for (let cookie in cookies){
-        if($.cookie(cookie) === "hint"){
-            console.log(cookie);
-            $.removeCookie(cookie);
-        }
-    }
-}
+$('.category_block').click(function(){
+    clearMyCookie();
+});
 
 $('.mobile-left-side-bar #dismiss').click(clearMyCookie);
 $('.left-side-bar #dismiss').click(clearMyCookie);
 
-// $('.category_block').click(function(){
-//     $(this).addClass(".hint-cat");
-//     clearHintCookie();
-//     $.cookie($(this).attr('id'), 'hint')
-//     clearMyCookie();
-// });
 
 $('.extra img').click(function(){
     $('.product-image img').attr('src', $(this).attr('src'));
