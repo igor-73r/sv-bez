@@ -148,5 +148,14 @@ p {
 @media (max-width: 990px) {
     .text{
         -webkit-text-size-adjust: 100%;
+        font-size: 27px;
+    }
+
+    .back-button {
+        font-size: 27px;
+    }
+
+    .bottom-data #order {
+        font-size: 27px;
     }
 }

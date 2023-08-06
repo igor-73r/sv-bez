@@ -4,7 +4,9 @@ $(document).ready(function($) {
     let prevScroll = $(window).scrollTop()
     let currentScroll
     let elems = document.getElementsByClassName('drop-down-data')
-    $(document.getElementById('id_brand')).parent().show()
+    console.log($('#id_brand').parent())
+    $('.mobile-left-side-bar #id_brand').parent().show();
+    $('.left-side-bar #id_brand').parent().show();
     for (let elem in elems){
         let this_element = $(elems[elem]).children('div')
         let element_id = this_element.attr('id')
@@ -13,8 +15,8 @@ $(document).ready(function($) {
                 this_element.parent().show()
             }
         }
-
     }
+
 
     let categories = document.getElementsByClassName('category_block');
     for (let cat in categories){
@@ -29,24 +31,30 @@ $(document).ready(function($) {
     $(window).on('scroll', function() {
 
         //ADD .TIGHT
-        let expression = $(window).scrollTop() + $(window).height() > $('.wrapper').outerHeight() && $(window).width() > 990
+        let expression = $(window).scrollTop() + $(window).height() > $('.wrapper').outerHeight() && $(window).width() > 990;
+        console.log($(window).scrollTop() + $(window).height(), $('.wrapper').outerHeight(), $(window).width() > 990)
         if (expression) {
             $('body').addClass('tight');
-            $('.arrow').hide();
         } else {
             $('body').removeClass('tight');
-            $('.arrow').show();
         }
 
         //HIDE HEADER
         currentScroll = $(window).scrollTop()
         let sub_header = $('.sub-header')
         const headerHidden = () => header.hasClass('header_hidden')
-        const subHeaderHidden = () => sub_header.hasClass('sub-header_hidden')
-
-        if (currentScroll > prevScroll && !headerHidden() && $('.mobile-left-side-bar').is(":hidden")) { // если прокручиваем страницу вниз и header не скрыт
-            header.addClass('header_hidden')
-            sub_header.addClass('sub-header_hidden')
+        let mlsb = document.getElementsByClassName('mobile-left-side-bar').length;
+        
+        if (mlsb){
+            if (currentScroll > prevScroll && !headerHidden() && $('.mobile-left-side-bar').is(":hidden")) { // если прокручиваем страницу вниз и header не скрыт
+                header.addClass('header_hidden')
+                sub_header.addClass('sub-header_hidden')
+            }
+        }else{
+            if (currentScroll > prevScroll && !headerHidden()) { // если прокручиваем страницу вниз и header не скрыт
+                header.addClass('header_hidden')
+                sub_header.addClass('sub-header_hidden')
+            }
         }
         if (currentScroll < prevScroll && headerHidden() && !expression) { // если прокручиваем страницу вверх и header скрыт
             header.removeClass('header_hidden')
@@ -91,7 +99,7 @@ $('#id_sort_type').on('change', function() {
 
 
 $('.label').click(function(){
-    let element = $(this).parent().children('.drop-down-data')
+    let element = $(this).siblings('.drop-down-data')
     if(element.is(":hidden")){
         element.show();
         $.cookie(element.children('div').attr('id'), 'show')
@@ -142,29 +150,18 @@ function clearMyCookie(){
     let cookies = $.cookie()
     for (let cookie in cookies){
         if($.cookie(cookie) === "show"){
-            $.removeCookie(cookie)
+            $.removeCookie(cookie);
         }
     }
 }
 
-function clearHintCookie(){
-    let cookies = $.cookie()
-    for (let cookie in cookies){
-        if($.cookie(cookie) === "hint"){
-            $.removeCookie(cookie)
-        }
-    }
-}
+$('.category_block').click(function(){
+    clearMyCookie();
+});
 
 $('.mobile-left-side-bar #dismiss').click(clearMyCookie);
 $('.left-side-bar #dismiss').click(clearMyCookie);
 
-$('.category_block').click(function(){
-    $(this).addClass(".hint-cat");
-    clearHintCookie();
-    $.cookie($(this).attr('id'), 'hint')
-    clearMyCookie();
-});
 
 $('.extra img').click(function(){
     $('.product-image img').attr('src', $(this).attr('src'));
