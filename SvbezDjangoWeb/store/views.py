@@ -1,8 +1,9 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .models import Products, ProductsPropertiesValues, ProductsCategories, Brands, OurCustomers, ProductsExtraPhotos
 from .filters import filtered_products
 from .forms import CategoryFilterForm, FeedbackForm, ExtendedFeedbackForm, FullTextSearch, SortForm
-from .tools import send_email, price_field_validation, extended_form_handler, search_product
+from .tools import send_email, price_field_validation, extended_form_handler, search_product, clear_my_cookie
 
 
 def home_page(request):
@@ -24,7 +25,7 @@ def home_page(request):
     return render(request, "home.html", locals())
 
 
-def base_store_view(request, category=None):
+def base_store_view(request, category=None) -> HttpResponse:
     search_form = FullTextSearch()
     categories = ProductsCategories.objects.all()
     sort_form = SortForm(request.GET)
@@ -56,8 +57,13 @@ def base_store_view(request, category=None):
                 products = products.order_by("-price")
             case "price_ascending":
                 products = products.order_by("price")
-
-    return render(request, "store/store.html", locals())
+    response = render(request, "store/store.html", locals())
+    if category:
+        response = clear_my_cookie(request, response)
+        response.set_cookie(str(category), "hint")
+    else:
+        response = clear_my_cookie(request, response)
+    return response
 
 
 def product_view(request, slug):

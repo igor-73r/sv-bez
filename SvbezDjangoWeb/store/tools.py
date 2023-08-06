@@ -5,6 +5,13 @@ from .forms import ExtendedFeedbackForm
 from .models import Products
 
 
+def clear_my_cookie(request, response):
+    for cookie in request.COOKIES:
+        if request.COOKIES[cookie] == "hint":
+            response.delete_cookie(cookie)
+    return response
+
+
 def search_product(product=None):
     searched_products = Products.objects.annotate(search=SearchVector('brand') +
                                                          SearchVector('model') +
